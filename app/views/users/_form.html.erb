@@ -1,0 +1,16 @@
+<%= simple_form_for @user do |f| %>
+
+	<%= f.input  :nome, label: "Nome" %>
+	<%= f.input  :cognome, label: "Cognome" %>
+	<%= f.input  :sesso, label: "Sesso" %>
+	<%= f.input  :eta, label: "Eta" %>
+	<%= f.input  :indirizzo, label: "Indirizzo" %>
+	<%= f.input  :citta, label: "Città" %>
+	<%= f.input  :numero_di_telefono, label: "Recapito telefonico" %>
+	<%= f.input  :email, label: "e-mail" %>
+	<%= f.input  :numero_matricola, label: "Numero di matricola" %>
+	<%= f.input  :password, label: "Password" %>
+
+	<%= f.button :submit %>
+
+<% end %>
