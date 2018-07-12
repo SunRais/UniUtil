@@ -1,0 +1,9 @@
+<%= simple_form_for @subject do |f| %>
+
+	<%= f.input  :nome, label: "Nome" %>
+	<%= f.input  :cfu, label: "Crediti" %>
+	<%= f.input  :descrizione, label: "Descrizione" %>
+
+	<%= f.button :submit %>
+
+<% end %>

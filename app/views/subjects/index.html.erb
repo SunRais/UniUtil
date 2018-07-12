@@ -1,0 +1,4 @@
+<% @subjects.each do |subject| %>
+	<h2><%= link_to subject.nome, subject_path(subject) %></h2>
+<% end %>
+

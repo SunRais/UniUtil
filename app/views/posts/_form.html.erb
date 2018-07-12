@@ -1,0 +1,7 @@
+<%= simple_form_for @post, :html => { :multipart => true } do |f| %>
+	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Scegli una categoria") %>
+	<%= f.input  :titolo, label: "Titolo" %>
+	<%= f.input  :contenuto, label: "Testo" %>
+	<%= f.button :submit %>
+
+<% end %>

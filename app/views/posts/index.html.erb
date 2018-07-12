@@ -1,0 +1,9 @@
+<h1 class="current-category"><%= params[:category] %></h1>
+<% if @posts.count == 0 %>
+	<h4>Non ci sono articoli in questa sezione al momento.</h4>
+<% else %>
+	<% @posts.each do |post| %>
+		<h2><%= link_to post.titolo, post_path(post) %></h2>
+	<% end %>
+<% end %>
+

@@ -10,6 +10,43 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "UniUtil", root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Registrati", new_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "LogIn", new_user_session_path  %></li>
+          <% end %>
+        </ul>
+        <ul class ="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              Categorie 
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% Category.all.each do |category| %>
+              <li class="<% 'active' if params[:category] == category.nome %>">
+                <%= link_to category.nome, posts_path(category: category.nome), class: "link" %>  
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Crea nuovo post", new_post_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    
   </body>
 </html>
