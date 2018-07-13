@@ -2,8 +2,14 @@
 <% if @posts.count == 0 %>
 	<h4>Non ci sono articoli in questa sezione al momento.</h4>
 <% else %>
-	<% @posts.each do |post| %>
-		<h2><%= link_to post.titolo, post_path(post) %></h2>
-	<% end %>
+	<div class="row">
+		<% @posts.each do |post| %>
+			<div class="col-md-3">
+				<a href="/posts/<%= post.id %>">
+					<%= image_tag post.post_img.url(:post_index), class: "post" %>
+				</a>
+			</div>
+		<% end %>
+	</div>
 <% end %>
 
