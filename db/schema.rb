@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_082648) do
+ActiveRecord::Schema.define(version: 2018_07_13_114738) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2018_07_13_082648) do
     t.string "post_img_content_type"
     t.integer "post_img_file_size"
     t.datetime "post_img_updated_at"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "rating"
+    t.text "commento"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "post_id"
   end
 
   create_table "subjects", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,13 +1,59 @@
-<%= image_tag @post.post_img.url(:post_show), class: "post-show" %>
-<h2><%= @post.titolo %> </h2>
-<h4> Categoria: <%= @post.category.nome %></h4>
-<p><%= @post.contenuto %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<%= image_tag @post.post_img.url(:post_show), class: "post-show" %>
+		</div>
+		<div class="col-md-8">
+			<div class="post-info">
+				<h2 class="post-titolo"><%= @post.titolo %> </h2>
+				<h3 class="post-autore"><span>From</span> <%= @post.user.email %></h3>
+				<h2 class="avg-rating">Valutazione media</h2>
+				<div class="average-review-rating" data-score="<%= @average_review %>"></div>
+				<span class="number-of-reviews">Basato su <%= @post.reviews.count %> valutazioni</span>
+				<p class="post-contenuto"><%= @post.contenuto %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="reviews">
+				<h1>Commenti</h1>
+				<%= render @post.reviews %>
+				<div>
+					<%= link_to "Aggiungi commento", new_post_review_path(@post), class: "btn btn-custom" %>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<%= link_to "Indietro", root_path%>
+	<div class="links btn-group">
+		<%= link_to "Indietro", root_path, class: "btn btn-custom" %>
 
-<% if user_signed_in? %>
-	<% if @post.user_id == current_user.id %>
-		<%= link_to "Modifica", edit_post_path(@post) %>
-		<%= link_to "Elimina", post_path(@post), method: :delete, data: { confirm: "Confermi?" } %>
-	<% end %>
-<% end %>
+		<% if user_signed_in? %>
+			<% if @post.user_id == current_user.id %>
+				<%= link_to "Modifica", edit_post_path(@post), class: "btn btn-custom" %>
+				<%= link_to "Elimina", post_path(@post), method: :delete, data: { confirm: "Confermi?" }, class: "btn btn-custom" %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+			},
+		path: '/assets'
+	});
+</script>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>
