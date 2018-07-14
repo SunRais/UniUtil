@@ -1,10 +1,12 @@
-<h1> Modifica post </h1>
-
-<%= simple_form_for @post, :html => { :multipart => true } do |f| %>
-	<%= f.select :category_id, @categories%>
-	<%= f.file_field :post_img%>
-	<%= f.input  :titolo, label: "Titolo" %>
-	<%= f.input  :contenuto, label: "Testo" %>
-	<%= f.button :submit %>
-
-<% end %>
+<div class="col-md-6 col-md-offset-3">
+	<div class="edit-post-form">
+		<h1> Modifica post </h1>
+		<%= simple_form_for @post, :html => { :multipart => true } do |f| %>
+			<%= f.select :category_id, @categories%>
+			<%= f.file_field :post_img%>
+			<%= f.input  :titolo, label: "Titolo" %>
+			<%= f.input  :contenuto, label: "Testo" %>
+			<%= f.button :submit, :class => 'btn-custom2' %>
+		<% end %>
+	</div>
+</div>

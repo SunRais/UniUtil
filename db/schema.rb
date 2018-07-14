@@ -40,17 +40,24 @@ ActiveRecord::Schema.define(version: 2018_07_13_114738) do
     t.integer "post_id"
   end
 
-  create_table "subjects", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nome", limit: 45, null: false
-    t.integer "cfu", null: false
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nome"
+    t.integer "cfu"
     t.text "descrizione"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "nome", default: "", null: false
+    t.string "cognome", default: "", null: false
+    t.string "sesso", default: "", null: false
+    t.string "numero_matricola", default: "", null: false
+    t.string "indirizzo", default: "", null: false
+    t.string "citta", default: "", null: false
+    t.string "numero_telefono", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
