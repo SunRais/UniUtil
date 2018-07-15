@@ -1,9 +1,8 @@
 <%= simple_form_for @subject do |f| %>
 
 	<%= f.input  :nome, label: "Nome" %>
-	<%= f.input  :cfu, label: "Crediti" %>
+	<%= f.input :cfu, as: :radio_buttons, collection: [['3','3 cfu'], ['6','6 cfu'], ['9','9 cfu'], ['12','12 cfu']], label_method: :second, value_method: :first, label: "Crediti formativi" %>
 	<%= f.input  :descrizione, label: "Descrizione" %>
-
 	<%= f.button :submit %>
 
 <% end %>

@@ -1,3 +1,11 @@
-<h1> Modifica materia </h1>
-
-<%= render 'form' %>
+<div class="col-md-6 col-md-offset-3">
+	<div class="edit-post-form">
+		<h1> Modifica materia </h1>
+		<%= simple_form_for @subject, :html => { :multipart => true } do |f| %>
+			<%= f.input  :nome, label: "Nome" %>
+			<%= f.input :cfu, as: :radio_buttons, collection: [['3','3 cfu'], ['6','6 cfu'], ['9','9 cfu'], ['12','12 cfu']], label_method: :second, value_method: :first, label: "Crediti formativi" %>
+			<%= f.input  :descrizione, label: "descrizione" %>
+			<%= f.button :submit, :class => 'btn-custom2' %>
+		<% end %>
+	</div>
+</div>

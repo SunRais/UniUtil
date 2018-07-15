@@ -1,4 +1,8 @@
-<% @subjects.each do |subject| %>
-	<h2><%= link_to subject.nome, subject_path(subject) %></h2>
-<% end %>
+<div class="row">
+	<% @subjects.each do |subject| %>
+		<div class="col-md-3">
+			<h2><%= link_to subject.nome, subject_path(subject) %></h2>
+		</div>
+	<% end %>
+</div>
 
