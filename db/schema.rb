@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_114738) do
     t.string "numero_telefono", default: "", null: false
     t.string "is_admin", default: "false", null: false
     t.string "is_professore", default: "false", null: false
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
