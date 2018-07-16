@@ -27,6 +27,9 @@
         <ul class ="nav navbar-nav navbar-right">
           <li><%= link_to "Bacheca", root_path, class: "navbar-brand" %></li>
           <li><%= link_to "Corsi", subjects_path, class: "navbar-brand" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Area Personale", user_path(current_user.id), class: "navbar-brand" %></li>
+          <% end %>
         </ul>
       </div>
     </nav>

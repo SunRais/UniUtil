@@ -21,12 +21,10 @@
 <% if @subjects.count == 0 %>
 	<h4>Non ci sono corsi.</h4>
 <% else %>
-	<div class="row">
+	<ul>
 		<% @subjects.each do |subject| %>
-			<div class="col-md-3">
-				<h2><%= link_to subject.nome, subject_path(subject) %></h2>
-			</div>
+			<li><%= link_to subject.nome, subject_path(subject) %></li>
 		<% end %>
-	</div>
+	</ul>
 <% end %>
 

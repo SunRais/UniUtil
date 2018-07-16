@@ -8,7 +8,7 @@
 		        		<li> <%= link_to "Tutte le categorie", root_path, class: "link" %></li>
 		            	<% Category.all.each do |category| %>
 		            	<li class="<% 'active' if params[:category] == category.nome %>">
-		                	<%= link_to category.nome, posts_path(category: category.nome), class: "link" %>  
+		                	<%= link_to category.nome, posts_path(category: category.nome), class: "link" %>
 		            	</li>
 		            	<% end %>
 		        	</ul>
@@ -17,6 +17,11 @@
 		            <li><%= link_to "Crea nuovo post", new_post_path %></li>
 		        <% end %>
 		    </ul>
+		    <ul class ="nav navbar-nav navbar-right">
+		     	<div class="topnav">
+			  		<input type="text" placeholder="Ricerca..">
+				</div> 
+			</ul>
 		</div>
 	</div>
 </nav>
@@ -28,7 +33,10 @@
 		<% @posts.each do |post| %>
 			<div class="col-md-3">
 				<a href="/posts/<%= post.id %>">
-					<%= image_tag post.post_img.url(:post_index), class: "post" %>
+					<figure class="figure">
+  						<%= image_tag post.post_img.url(:post_index), class: "post" %>
+  						<figcaption class="figure-caption"><%= post.titolo%></figcaption>
+					</figure>
 				</a>
 			</div>
 		<% end %>

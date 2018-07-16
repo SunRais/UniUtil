@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="post-info">
+				<h1 class="post-titolo"><%= @user.nome %> <%= @user.cognome %> </h1>
+				<h2 class="post-titolo">Email: <%= @user.email %></h2>
+				<h3 class="post-titolo">Numero di matricola: <%= @user.numero_matricola %></h3>
+				<h3 class="post-titolo">Indirizzo: <%= @user.indirizzo %></h3>
+				<h3 class="post-titolo">Città: <%= @user.citta %></h3>
+				<h3 class="post-titolo">Recapito telefonico: <%= @user.numero_telefono %></h3>
+			</div>
+		</div>
+	</div>
+	<div class="links btn-group">
+		<%= link_to "Indietro", root_path, class: "btn btn-custom" %>
+	</div>
+</div>
