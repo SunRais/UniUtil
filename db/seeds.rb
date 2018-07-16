@@ -25,6 +25,9 @@ Review.create(rating:4, commento: "Grazie", user_id: 3, post_id: 3)
 Review.create(rating:5, commento: "Siamo internazionali!!", user_id: 1, post_id: 4)
 Review.create(rating:4, commento: "Grandi ragazzi.", user_id: 2, post_id: 4)
 Review.create(rating:5, commento: "Università di Ferrara sempre al top.", user_id: 3, post_id: 4)
+Course.create(nome: "Laurea magistrale in Ingegneria Informatica e dell'Automazione")
+Course.create(nome: "Laurea triennale in Ingegneria Meccanica ")
+Course.create(nome: "Laurea triennale in Ingegneria Civile")
 
 
 

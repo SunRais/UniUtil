@@ -24,6 +24,10 @@
             <li><%= link_to "LogIn", new_user_session_path  %></li>
           <% end %>
         </ul>
+        <ul class ="nav navbar-nav navbar-right">
+          <li><%= link_to "Bacheca", root_path, class: "navbar-brand" %></li>
+          <li><%= link_to "Corsi", subjects_path, class: "navbar-brand" %></li>
+        </ul>
       </div>
     </nav>
 

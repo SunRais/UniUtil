@@ -3,7 +3,11 @@ class SubjectsController < ApplicationController
 	before_action :find_subject, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@subjects = Subject.all.order("created_at DESC")
+		if params[:course].blank?
+			@subjects = Subject.all.order("nome ASC")
+		else
+
+		end
 	end
 
 	def show
@@ -42,10 +46,11 @@ class SubjectsController < ApplicationController
 	private
 
 		def subject_params
-			params.require(:subject).permit(:nome, :cfu, :descrizione)
+			params.require(:subject).permit(:nome, :cfu, :descrizione, courses_ids: [])
 		end
 
 		def find_subject
 			@subject = Subject.find(params[:id])
 		end
+
 end
