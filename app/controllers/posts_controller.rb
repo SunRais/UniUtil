@@ -5,7 +5,11 @@ class PostsController < ApplicationController
 
 	def index
 		if params[:category].blank?
-			@posts = Post.all.order("created_at DESC")
+			if params[:search].blank?
+				@posts = Post.all.order("created_at DESC")
+			else
+				@posts = Post.where("titolo LIKE ? ", "%#{params[:search]}%").order("created_at DESC")
+			end
 		else
 			@category_id = Category.find_by(nome: params[:category]).id
 			@posts = Post.where(:category_id => @category_id).order("created_at DESC")
@@ -56,7 +60,7 @@ class PostsController < ApplicationController
 	private
 
 		def post_params
-			params.require(:post).permit(:titolo, :contenuto, :category_id, :post_img)
+			params.require(:post).permit(:titolo, :contenuto, :category_id, :post_img, :search)
 		end
 
 		def find_post

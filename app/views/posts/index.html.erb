@@ -18,14 +18,14 @@
 		        <% end %>
 		    </ul>
 		    <ul class ="nav navbar-nav navbar-right">
-		     	<div class="topnav">
-			  		<input type="text" placeholder="Ricerca..">
-				</div> 
+		    	<%= simple_form_for :search,  url: posts_path , :method => :get do |f| %>
+    				<li><%= f.input  :search, placeholder: 'Ricerca', label: false %></li>
+    				<li><%= f.button :submit , :class => 'btn-custom2'%></li>
+				<% end %>
 			</ul>
 		</div>
 	</div>
 </nav>
-<h1 class="current-category"><%= params[:category] %></h1>
 <% if @posts.count == 0 %>
 	<h4>Non ci sono articoli in questa sezione al momento.</h4>
 <% else %>
