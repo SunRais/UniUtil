@@ -2,6 +2,7 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
+Rails.application.config.assets.precompile += %w( sidebar.css )
 
 Rails.application.config.assets.precompile += %w( discussions.css )
 Rails.application.config.assets.precompile += %w( discussions.js )
