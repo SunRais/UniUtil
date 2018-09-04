@@ -10,63 +10,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_091458) do
+ActiveRecord::Schema.define(version: 2018_08_30_092802) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nome"
+  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "date"
+    t.string "place"
+    t.text "note"
+    t.string "classroom"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "description"
+    t.integer "discussion_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nome"
+    t.string "name"
+    t.string "type"
+    t.text "description"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "titolo"
-    t.text "contenuto"
+  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "category_id"
-    t.string "post_img_file_name"
-    t.string "post_img_content_type"
-    t.integer "post_img_file_size"
-    t.datetime "post_img_updated_at"
   end
 
-  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "rating"
-    t.text "commento"
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.string "place"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "cost"
+    t.datetime "deadline"
     t.integer "user_id"
-    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "date"
+    t.string "classroom"
+    t.string "building"
+    t.integer "user_id"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result"
+    t.string "state"
+    t.integer "subject_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nome"
+    t.string "name"
     t.integer "cfu"
-    t.text "descrizione"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "nome", default: "", null: false
-    t.string "cognome", default: "", null: false
-    t.string "sesso", default: "", null: false
-    t.string "numero_matricola", default: "", null: false
-    t.string "indirizzo", default: "", null: false
-    t.string "citta", default: "", null: false
-    t.string "numero_telefono", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "surname", default: "", null: false
+    t.string "sex", default: "", null: false
+    t.string "badge_number", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "telephone_number", default: "", null: false
     t.string "is_admin", default: "false", null: false
-    t.string "is_professore", default: "false", null: false
+    t.string "is_professor", default: "false", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "province"
+    t.integer "course_id"
+    t.integer "degree_appeals_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
