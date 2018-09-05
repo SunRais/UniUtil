@@ -1,11 +1,16 @@
 <nav class="navbar superior-bar navbar-default">
 	<div>
-		<%= link_to "Nuova discussione", new_discussion_path %></li>
-	<div>
-		Le mie discussioni
-	</div>
-	<div>
-		Preferiti
+		<ul>
+			<li>
+				<%= link_to "Nuova discussione", new_discussion_path %>
+			</li>
+			<li>
+				Le mie discussioni
+			</li>
+			<li>
+				Preferiti
+			</li>
+		</ul>
 	</div>
 </nav>
 <nav class="type-discussions">
@@ -30,7 +35,15 @@
 	</div>
 </nav>
 <div>
-	Creazione post
+	<% if @discussions %>
+		<% @discussions.each do |discussion| %>
+			<h2> discussion.title </h2>
+		<% end %>
+	<% else %>
+	<h2> 
+		Non ci sono discussioni.
+	</h2>
+<% end %>
 </div>
 <div>
 	Numeri per far scorrere le pagine

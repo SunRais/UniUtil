@@ -1,4 +1,6 @@
 class DiscussionsController < ApplicationController
+  
+  before_action :find_discussion, only: [:show, :edit, :update, :destroy]
   def index
   end
   
@@ -6,14 +8,27 @@ class DiscussionsController < ApplicationController
     @discussion = Discussion.new
   end
   
-  def create
-	@discussion = Discussion.new(discussion_params)
+  def show
   end
+  def create
+	@discussion = Discussion.new(discussions_params)
+	
+	if @discussion.save
+	  redirect_to new_discussion_path
+	else
+	  render 'new'
+	end
+  end
+  
+  
   
   private
   
 	def discussions_params
-		params.require(:discussion).permit(:title, :description)
+	  params.require(:discussion).permit(:title, :description)
 	end
-  
+	
+	def find_discussion
+	  @discussion = Discussion.find(params[:id])
+	end
 end
