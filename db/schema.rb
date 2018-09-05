@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_08_30_092802) do
 
-  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "date"
     t.string "place"
     t.text "note"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "description"
     t.integer "discussion_id"
     t.integer "user_id"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "type"
     t.text "description"
   end
 
-  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "title"
     t.text "description"
     t.integer "user_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
     t.string "place"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "fees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "cost"
     t.datetime "deadline"
     t.integer "user_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "date"
     t.string "classroom"
     t.string "building"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "result"
     t.string "state"
     t.integer "subject_id"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.integer "cfu"
     t.text "description"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.integer "duration"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
@@ -101,12 +101,10 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.string "telephone_number", default: "", null: false
     t.string "is_admin", default: "false", null: false
     t.string "is_professor", default: "false", null: false
+    t.string "province", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "province"
-    t.integer "course_id"
-    t.integer "degree_appeals_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
