@@ -15,6 +15,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :numero_telefono,    null: false, default: ""
       t.string :is_admin,           null: false, default: "false"
       t.string :is_professore,      null: false, default: "false"
+      t.string :province,           null: false, default: ""
+      #t.integer :course_id,         null: false, default: "0"
+      #t.integer :degree_appeals_id, null: false, default: "0"
 
       
       ## Recoverable
@@ -22,7 +25,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       #t.datetime :reset_password_sent_at
 
       ## Rememberable
-      t.datetime :remember_created_at
+      #t.datetime :remember_created_at
 
       ## Trackable
       #t.integer  :sign_in_count, default: 0, null: false
