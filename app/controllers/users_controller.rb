@@ -11,5 +11,6 @@ class UsersController < ApplicationController
 	private
 		def find_user
 			@user = User.find(params[:id])
+			@course = Course.find(@user.course_id)
 		end
 end

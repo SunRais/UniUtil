@@ -8,34 +8,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    <title>Area Privata - UniUtil</title>
+    <title>Area Gestione Carriera - UniUtil</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <!-- Our Custom CSS -->
     <%= stylesheet_link_tag "sidebar" %>
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
 
     <div class="wrapper">
-        <!-- Sidebar  -->
+        <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><%= link_to "UniUtil", root_path%></h3>
-                <strong><%= link_to "UU", root_path%></strong>
+                <center>
+                    <%= link_to root_path do %>
+                        <h3>Uni.Util</h3>
+                    <% end %>
+                    <% if user_signed_in? %>
+                        <div class="circle">
+                            <%= link_to user_path(current_user.id) do %>
+                                <%= image_tag(current_user.avatar.url(:thumb), unless: current_user.avatar.nil?) %>
+                            <% end %>
+                        </div>
+                    <% else %>
+                        <h4>Ospite</h4>
+                    <% end %>
+                    <br>Servizi online per la didattica
+                </center>
             </div>
 
             <ul class="list-unstyled components">
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
-                        Area Riservata
+                        <i class="fas fa-home"></i> Area Riservata
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <% if user_signed_in? %>
@@ -109,15 +123,16 @@
             </ul>
         </nav>
 
-        <!-- Page Content  -->
+        <!-- Page Content Holder -->
         <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -126,21 +141,17 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="#">Forum</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="https://de.unife.it/it">Unife</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
             <div class="container">
               <%= yield %>
             </div>
@@ -158,6 +169,7 @@
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
             });
         });
     </script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_092802) do
+ActiveRecord::Schema.define(version: 2018_09_16_081626) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "date"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "typology"
     t.text "description"
   end
 
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "email"
+    t.string "badge_number"
+    t.string "code"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "result"
     t.string "state"
@@ -90,22 +99,34 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
-    t.string "surname", default: "", null: false
-    t.string "sex", default: "", null: false
-    t.string "badge_number", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "city", default: "", null: false
-    t.string "telephone_number", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.string "name", null: false
+    t.string "surname", null: false
+    t.string "sex", null: false
+    t.string "badge_number", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "telephone_number", null: false
     t.string "is_admin", default: "false", null: false
     t.string "is_professor", default: "false", null: false
-    t.string "province", default: "", null: false
+    t.string "province", null: false
+    t.integer "course_id", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
