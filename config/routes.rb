@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :users  
   resources  :subjects
-
+  get '/users/:id/situation', to: 'users#situation'
   resources  :posts do
   	resources  :reviews
   end
