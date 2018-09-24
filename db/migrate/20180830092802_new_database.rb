@@ -1,10 +1,11 @@
 class NewDatabase < ActiveRecord::Migration[5.2]
   def change
-	drop_table :posts
+    drop_table :posts
 	drop_table :reviews
 	
 	add_column :courses, :type, :string
 	add_column :courses, :description, :text
+	add_column :courses, :
 	rename_column :courses, :nome, :name
 	
 	rename_column :subjects, :nome, :name
@@ -19,6 +20,9 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	rename_column :users, :citta, :city
 	rename_column :users, :numero_telefono, :telephone_number
 	rename_column :users, :is_professore, :is_professor
+	add_column :users, :province, :string
+	add_column :users, :course_id, :integer
+	add_column :users, :degree_appeals_id, :integer
 	
 	create_table :appeals do |a|
 	  a.datetime :date

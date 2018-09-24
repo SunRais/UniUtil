@@ -2,21 +2,29 @@ class DiscussionsController < ApplicationController
   
   before_action :find_discussion, only: [:show, :edit, :update, :destroy]
   def index
+	if params[:discussion_type].blank?
+	  @discussions = Discussion.all.order("created_at DESC")
+	else
+	 @discussion_type = params[:discussion_type]
+	 @discussion = Discussion.where(:discussion_type => @discussion_type).order("created at DESC")
+	end
   end
   
   def new
-    @discussion = Discussion.new
+    @discussion = current_user.discussions.build
+    
   end
   
   def show
   end
   def create
-	@discussion = Discussion.new(discussions_params)
+	@discussion = current_user.discussions.build(discussions_params)
+	@discussion.discussion_type = params[:type_discussion]
 	
 	if @discussion.save
-	  redirect_to new_discussion_path
+	  redirect_to discussions_path
 	else
-	  render 'new'
+	  render 'show'
 	end
   end
   

@@ -1,2 +1,11 @@
 <h2> <%= @discussion.title %> </h2>
+<h4> <%= @discussion.discussion_type %> </h4>
 <p> <%= @discussion.description %></p>
+
+<% if @discussion.user_id == current_user.id%>
+	<%= link_to "Modifica", edit_discussion_path(@discussion)%>
+	<%= link_to "Cancella", discussion_path(@discussion), method: :delete, data: {confirm: "Sei sicuro?"} %>
+<% end %>
+
+<%= render @discussion.comments %>
+<%= render :partial => 'comments/form' %> 

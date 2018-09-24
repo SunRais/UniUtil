@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_092802) do
+ActiveRecord::Schema.define(version: 2018_09_07_110241) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 2018_08_30_092802) do
   end
 
   create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "title"
-    t.text "description"
-    t.integer "user_id"
+    t.text "title", null: false
+    t.text "description", null: false
+    t.integer "user_id", null: false
+    t.string "discussion_type", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
