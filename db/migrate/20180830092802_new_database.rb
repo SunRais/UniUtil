@@ -3,7 +3,7 @@ class NewDatabase < ActiveRecord::Migration[5.2]
     drop_table :posts
 	drop_table :reviews
 	
-	add_column :courses, :type, :string
+	add_column :courses, :typology, :string
 	add_column :courses, :description, :text
 	add_column :courses, :
 	rename_column :courses, :nome, :name
@@ -76,6 +76,14 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	  l.string :building
 	  l.integer :user_id
 	  l.integer :subject_id
+	  l.timestamps null: false
+	end
+
+	create_table :profiles do |l|
+	  l.string :email
+	  l.string :badge_number
+	  l.string :code
+	  l.integer :course_id
 	  l.timestamps null: false
 	end
   end

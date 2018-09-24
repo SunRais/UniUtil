@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_110241) do
+ActiveRecord::Schema.define(version: 2018_09_18_081817) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2018_09_07_110241) do
     t.string "name"
     t.string "type"
     t.text "description"
+  end
+
+  create_table "courses_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "subject_id"
+    t.integer "year"
+    t.integer "semester"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_subjects_on_course_id"
+    t.index ["subject_id"], name: "index_courses_subjects_on_subject_id"
   end
 
   create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,7 +119,13 @@ ActiveRecord::Schema.define(version: 2018_09_07_110241) do
     t.string "province"
     t.integer "course_id"
     t.integer "degree_appeals_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "courses_subjects", "courses"
+  add_foreign_key "courses_subjects", "subjects"
 end

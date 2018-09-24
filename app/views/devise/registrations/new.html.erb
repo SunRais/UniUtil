@@ -1,26 +1,31 @@
-<div class="col-md-6 col-md-offset-3">
-	<div class="signup-form">
-		<h2>Registrazione</h2>
-		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :multipart => true }) do |f| %>
-		<%= f.error_notification %>
-        <%= devise_error_messages! %>
-	    	<div class="form-inputs">
-    			<%= f.input :email, required: true, autofocus: true %>
-    			<%= f.input :password, required: true, hint: ("Minimo #{@minimum_password_length} caratteri" if @minimum_password_length) %>
-    			<%= f.input :password_confirmation, required: true, label: "Conferma password" %>
-    			<%= f.input :name, required: true, label: "Nome" %>
-    			<%= f.input :surname, required: true, label: "Cognome" %>
-    			<%= f.input :sex, as: :radio_buttons, collection: [['M','Maschio'],['F','Femmina']], label_method: :second, value_method: :first %>
-    			<%= f.input :badge_number, required: true, label: "Numero di matricola" %>
-    			<%= f.input :address, required: true,hint: ("es. Via Garibaldi 34"), label: "Indirizzo" %>
-    			<%= f.input :city, required: true, label: "Città" %>
+<div class="center">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="signup-form">
+        <center><h2>Registrazione</h2></center><br>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :multipart => true }) do |f| %>
+        <%= f.error_notification %>
+            <%= devise_error_messages! %>
+            <div class="form-inputs">
+                <%= f.input :code, required: true, label: "Codice identificativo", hint: ("Codice univoco ricevuto in segreteria all'immatricolazione."), autofocus: true %>
+                <%= f.input :email, required: true, hint: ("Usare mail terminante con @student.unife.it ricevuta in segreteria."), autofocus: true %>
+                <%= f.input :password, required: true, hint: ("Minimo #{@minimum_password_length} caratteri" if @minimum_password_length) %>
+                <%= f.input :password_confirmation, required: true, label: "Conferma password" %>
+                <%= f.input :name, required: true, label: "Nome" %>
+                <%= f.input :surname, required: true, label: "Cognome" %>
+                <%= f.input :sex, label: "Sesso", as: :radio_buttons, collection: [['M','Maschio'],['F','Femmina']], label_method: :second, value_method: :first %>
+                <%= f.input :badge_number, required: true, label: "Numero di matricola" %>
+                <%= f.input :address, required: true, hint: ("es. Via Garibaldi 34"), label: "Indirizzo" %>
+                <%= f.input :city, required: true, label: "Città" %>
                 <%= f.input :province, required: true, label: "Provincia" %>
-    			<%= f.input :telephone_number, required: true, label: "Recapito telefonico" %>
- 			</div>
-  			<div class="form-actions">
-	    		<%= f.button :submit, "Registrati", class: "btn-custom2" %>
-  			</div>
-		<% end %>
-		<%= render "devise/shared/links" %>
-	</div>
+                <%= f.input :telephone_number, required: true, label: "Recapito telefonico" %>
+                <%= f.input :course_id, label: "Corso di studio", as: :select, collection: [['1','Laurea magistrale in Ingegneria Iformatica e della automazione'],['2','Laurea triennale in Ingegneria Elettronica e Informatica'],['3','Laurea triennale in Ingegneria civile']], label_method: :second, value_method: :first %>
+                <%= f.input :avatar, as: :file %>
+          </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Registrati", class: "btn btn-info" %>
+            </div>
+        <% end %>
+        <br><u><%= render "devise/shared/links" %></u>
+      </div>
+    </div>
 </div>

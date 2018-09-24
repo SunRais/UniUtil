@@ -1,0 +1,8 @@
+<%= @course.name %><br>
+<% if @course.typology == "triennale" %>
+	<table border="1">
+		<% @course.subjects.each do | cs | %>
+			<tr><td><%= cs.name %></td></tr>
+		<% end %>
+	</table>
+<% end %>
