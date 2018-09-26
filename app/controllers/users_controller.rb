@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 	
-	layout 'private_area'
-	
 	before_action :find_user
 	before_action :authenticate_user!
 

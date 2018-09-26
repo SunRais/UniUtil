@@ -10,7 +10,10 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	rename_column :subjects, :nome, :name
 	rename_column :subjects, :descrizione, :description
 	add_column :subjects, :duration, :integer
-	
+	add_column :subjects, :year, :integer
+	add_column :subjects, :semester, :integer
+	add_column :subjects, :user_id, :integer
+
 	rename_column :users, :nome, :name
 	rename_column :users, :cognome, :surname
 	rename_column :users, :sesso, :sex
@@ -25,7 +28,10 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	  a.string :place
 	  a.text :note
 	  a.string :classroom
-	  a.integer :user_id
+	  a.string :is_partial
+	  a.integer :subject_id
+	  a.datetime :date_start_signing_up
+	  a.datetime :date_stop_signing_up
 	  a.timestamps null: false
 	end
 	
@@ -34,6 +40,7 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	  r.string :state
 	  r.integer :subject_id
 	  r.integer :user_id
+	  r.string :is_confirmed
 	  r.timestamps null: false
 	end
 	

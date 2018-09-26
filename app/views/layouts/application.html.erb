@@ -1,46 +1,166 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>UniUtil</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-  </head>
+    <title>Area Gestione Carriera - UniUtil</title>
 
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to "UniUtil", root_path, class: "navbar-brand" %>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+    <!-- Our Custom CSS -->
+    <%= stylesheet_link_tag "sidebar" %>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <center>
+                    <%= link_to root_path do %>
+                        <h3>Uni.Util</h3>
+                    <% end %>
+                    <% if user_signed_in? %>
+                        <% if current_user.is_professor == true %>
+                            Professore
+                        <% else %>
+                            Studente
+                        <% end %><br>
+                        <div class="circle">
+                            <%= link_to user_path(current_user.id) do %>
+                                <%= image_tag(current_user.avatar.url(:thumb), unless: current_user.avatar.nil?) %>
+                            <% end %>
+                        </div>
+                    <% else %>
+                        <br>Ospite
+                    <% end %>
+                    <br>Servizi online per la didattica
+                </center>
+            </div>
+            <% if user_signed_in? %>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-home"></i> Area Riservata
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                          <li><%= link_to "Anagrafica", user_path(current_user.id)%></li>
+                          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/users/<%= current_user.id %>/situation">
+                            <i class="fas fa-address-card"></i>
+                            Libretto Elettronico
+                        </a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Esami
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Iscrizione Esami</a>
+                            </li>
+                            <li>
+                                <a href="#">Iscrizione Prove Parziali</a>
+                            </li>
+                            <li>
+                                <a href="#">Prenotazioni Eseguite</a>
+                            </li>
+                            <li>
+                                <a href="#">Esiti Esami Sostenuti</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-clock"></i>
+                            Orario Settimanale
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/posts">
+                            <i class="fas fa-address-card"></i>
+                            Bacheca
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download"> Link 1</a>
+                    </li>
+                    <li>
+                        <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Link 2</a>
+                    </li>
+                </ul>
+            <% else %>
+                <ul>
+                    <li><%= link_to "Registrazione", new_user_registration_path %></li>
+                    <li><%= link_to "Login", new_user_session_path  %></li>
+                </ul>
+            <% end %>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://de.unife.it/it">Unife</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            <div class="container">
+              <%= yield %>
+            </div>
         </div>
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Registrati", new_user_registration_path %></li>
-            <li><%= link_to "LogIn", new_user_session_path  %></li>
-          <% end %>
-        </ul>
-        <ul class ="nav navbar-nav navbar-right">
-          <li><%= link_to "Bacheca", root_path, class: "navbar-brand" %></li>
-          <li><%= link_to "Corsi", subjects_path, class: "navbar-brand" %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Area Personale", user_path(current_user.id), class: "navbar-brand" %></li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="container">
-      <%= yield %>
     </div>
 
-  </body>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
 </html>

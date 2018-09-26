@@ -17,7 +17,10 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.string "place"
     t.text "note"
     t.string "classroom"
-    t.integer "user_id"
+    t.string "is_partial"
+    t.integer "subject_id"
+    t.datetime "date_start_signing_up"
+    t.datetime "date_stop_signing_up"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,8 +42,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
   create_table "courses_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "course_id"
     t.bigint "subject_id"
-    t.integer "year"
-    t.integer "semester"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_courses_subjects_on_course_id"
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.string "state"
     t.integer "subject_id"
     t.integer "user_id"
+    t.string "is_confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,6 +109,9 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration"
+    t.integer "year"
+    t.integer "semester"
+    t.integer "user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -115,14 +120,14 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.string "name", null: false
     t.string "surname", null: false
     t.string "sex", null: false
-    t.string "badge_number", null: false
+    t.string "badge_number"
     t.string "address", null: false
     t.string "city", null: false
     t.string "telephone_number", null: false
     t.string "is_admin", default: "false", null: false
     t.string "is_professor", default: "false", null: false
     t.string "province", null: false
-    t.integer "course_id", null: false
+    t.integer "course_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
