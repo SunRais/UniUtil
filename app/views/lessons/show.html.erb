@@ -1,0 +1,12 @@
+<div class="container emp-profile">
+	<div class="center">
+	    <div class="col-md-6 col-md-offset-3">
+			<%= @lesson.date %>
+			<%= @lesson.classroom %>
+			<%= @lesson.building %>
+			<%= @lesson.topic %>
+			<%= link_to "Modifica", edit_lesson_path(@lesson), class: "btn btn-custom" %>
+			<%= link_to "Elimina", lesson_path(@lesson), method: :delete, data: { confirm: "Confermi?" }, class: "btn btn-custom" %>
+		</div>
+	</div>
+</div>

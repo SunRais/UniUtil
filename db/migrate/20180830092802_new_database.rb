@@ -74,9 +74,11 @@ class NewDatabase < ActiveRecord::Migration[5.2]
 	end
 	
 	create_table :lessons do |l|
-	  l.datetime :date
+	  l.date :date
+	  l.time :start_time
 	  l.string :classroom
 	  l.string :building
+	  l.text :topic, null: true
 	  l.integer :user_id
 	  l.integer :subject_id
 	  l.timestamps null: false

@@ -74,9 +74,11 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
   end
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.datetime "date"
+    t.date "date"
+    t.time "start_time"
     t.string "classroom"
     t.string "building"
+    t.text "topic"
     t.integer "user_id"
     t.integer "subject_id"
     t.datetime "created_at", null: false
@@ -124,8 +126,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.string "address", null: false
     t.string "city", null: false
     t.string "telephone_number", null: false
-    t.string "is_admin", default: "false", null: false
-    t.string "is_professor", default: "false", null: false
+    t.boolean "is_admin", default: false, null: false
+    t.boolean "is_professor", default: false, null: false
     t.string "province", null: false
     t.integer "course_id"
     t.string "reset_password_token"

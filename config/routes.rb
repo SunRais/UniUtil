@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources  :posts do
   	resources  :reviews
   end
+  resources :appeals
+  resources :lessons
+  get '/lessons/pattern/new_pattern', to:'lessons#new_pattern'
+  post '/lessons/pattern', to: 'lessons#create_pattern'
   
   root 'welcome#index'
   
