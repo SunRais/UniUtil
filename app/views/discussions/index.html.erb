@@ -5,7 +5,7 @@
 				<%= link_to "Nuova discussione", new_discussion_path %>
 			</li>
 			<li>
-				Le mie discussioni
+				<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
 			</li>
 			<li>
 				Preferiti
@@ -14,24 +14,32 @@
 	</div>
 </nav>
 <nav class="type-discussions">
-	<div>
-		<ul>
-			<li>
-				<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
-			</li>
-			<li>
-				<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppi di studio') %>
-			</li>
-			<li>
-				<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
-			</li>
-			<li>
-				<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
-			</li>
-		</ul>
-	</div>
-	<div>
-		Barra di ricerca
+	<div class="row">
+		<div class="col">
+			<ul>
+				<li>
+					<%= link_to "Tutte le discussioni", discussions_path %>
+				</li>
+				<li>
+					<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
+				</li>
+				<li>
+					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppi di studio') %>
+				</li>
+				<li>
+					<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
+				</li>
+				<li>
+					<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
+				</li>
+			</ul>
+		</div>
+		<div class="col">
+			<%= form_tag(discussions_path, method: :get) do %>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag 'Cerca', name: nil%>	
+			<% end %>
+		</div>
 	</div>
 </nav>
 <div>

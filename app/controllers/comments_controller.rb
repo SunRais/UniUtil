@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	def new
 		@comment = Comment.new
 	end
-	
+
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.discussion_id = @discussion.id
@@ -14,7 +14,15 @@ class CommentsController < ApplicationController
 		else
 			render 'new'
 		end 
-	end
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+  end
+  
+  def find_user
+	
+  end
 	
 	private
 	
@@ -25,5 +33,8 @@ class CommentsController < ApplicationController
 		def find_discussion
 			@discussion = Discussion.find(params[:discussion_id])
 		end
-
+		
+		def find_user
+			@user = User.find(params[:user_id])
+		end
 end

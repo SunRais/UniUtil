@@ -1,5 +1,5 @@
 class ChangeColumnTypeFromDiscussions < ActiveRecord::Migration[5.2]
   def change
-	rename_column :discussions, :type, :type_discussion
+	add_column :discussions, :discussion_type, :string
   end
 end
