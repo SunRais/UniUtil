@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 	
-	layout 'private_area'
-	
 	before_action :find_user
 	before_action :authenticate_user!
+	before_action :authorize_current_user, only: [:show]
 
 	def show
 	end
@@ -15,5 +14,9 @@ class UsersController < ApplicationController
 		def find_user
 			@user = User.find(params[:id])
 			@course = Course.find(@user.course_id)
+		end
+
+		def authorize_current_user
+    		redirect_to(root_path) unless current_user.id == @user.id
 		end
 end

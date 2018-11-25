@@ -1,0 +1,16 @@
+<div>
+	<h1>
+		Nuovo gruppo
+	</h1>
+</div>
+<%= render 'form' %>
+<% if @discussions %>
+	<% @discussions.each do |discussion| %>
+		<h2> discussion.title </h2>
+	<% end %>
+<% else %>
+	<h2> 
+		Non ci sono gruppi.
+	</h2>
+<% end %>
+

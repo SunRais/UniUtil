@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default">
+      <div class="container">
+		<div class="row" >
+			<ul class ="nav navbar2-nav navbar2-left">
+				<li class="dropdown">
+		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Categorie <span class="caret"></span></a>
+		        	<ul class="dropdown-menu" role="menu">
+		        		<li> <%= link_to "Tutte le categorie", root_path, class: "link" %></li>
+		            	<% Category.all.each do |category| %>
+		            	<li class="<% 'active' if params[:category] == category.nome %>">
+		                	<%= link_to category.nome, posts_path(category: category.nome), class: "link" %>
+		            	</li>
+		            	<% end %>
+		        	</ul>
+				</li>
+				<% if user_signed_in? %>
+		            <li><%= link_to "Crea nuovo post", new_post_path %></li>
+		        <% end %>
+		    </ul>
+		    <ul class ="nav navbar-nav navbar-right">
+		    	<%= simple_form_for :search,  url: posts_path , :method => :get do |f| %>
+    				<li><%= f.input  :search, placeholder: 'Ricerca', label: false %></li>
+    				<li><%= f.button :submit , :class => 'btn-custom2'%></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</nav>
+<% if @posts.count == 0 %>
+	<h4>Non ci sono articoli in questa sezione al momento.</h4>
+<% else %>
+	<div class="row">
+		<% @posts.each do |post| %>
+			<div class="col-md-3">
+				<a href="/posts/<%= post.id %>">
+					<figure class="figure">
+  						<%= image_tag post.post_img.url(:post_index), class: "post" %>
+  						<figcaption class="figure-caption"><%= post.titolo%></figcaption>
+					</figure>
+				</a>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+

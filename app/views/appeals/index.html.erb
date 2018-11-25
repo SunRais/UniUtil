@@ -1,0 +1,13 @@
+<% if @appeals.count == 0 %>
+	<h4>Non ci sono appelli.</h4>
+<% else %>
+	<div class="row">
+		<% @appeals.each do |appeal| %>
+			<div class="col-md-3">
+				<a href="/appeals/<%= appeal.id %>">
+					<%= appeal.id %>
+				</a>
+			</div>
+		<% end %>
+	</div>
+<% end %>

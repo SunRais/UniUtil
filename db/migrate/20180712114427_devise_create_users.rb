@@ -9,14 +9,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :nome,               null: false
       t.string :cognome,            null: false
       t.string :sesso,              null: false
-      t.string :numero_matricola,   null: false
+      t.string :numero_matricola,   null: true
       t.string :indirizzo,          null: false
       t.string :citta,              null: false
       t.string :numero_telefono,    null: false
-      t.string :is_admin,           null: false, default: "false"
-      t.string :is_professore,      null: false, default: "false"
+      t.boolean :is_admin,           null: false, default: false
+      t.boolean :is_professore,      null: false, default: false
       t.string :province,           null: false
-      t.integer :course_id,         null: false
+      t.integer :course_id,         null: true
       #t.integer :degree_appeals_id, null: false, default: "0"
 
       

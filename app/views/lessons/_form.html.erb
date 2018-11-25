@@ -1,0 +1,14 @@
+<%= simple_form_for @lesson, :html => { :multipart => true } do |f| %>
+	<%= f.error_notification %>
+	<div class="form-inputs">
+		<%= select_tag(:subject_id, options_for_select(@subjects), :prompt => "Scegli una tua materia") %>
+	 	<%= f.input :classroom, label: "Aula", as: :select, collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] %>
+	 	<%= f.input :building, label: "Edificio", as: :select, collection: ["Cattedrale", "Blocco F"] %>
+	 	<%= f.input :date, as: :date, html5: true %>
+	 	<%= f.input :start_time, :as => :time, :minute_step => 30 %>
+	 	<%= f.input :topic, label: "Argomenti trattati" %>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit, "Crea Lezione", class: "btn btn-info" %>
+	</div>
+<% end %>
