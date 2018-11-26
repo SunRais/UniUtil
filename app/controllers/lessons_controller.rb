@@ -31,13 +31,7 @@ class LessonsController < ApplicationController
 	def create_pattern
 		@lesson = current_user.lessons.build(pattern_lesson_params)
 		@lesson.subject_id = params[:subject_id]
-		@lesson.date = params[:start_date]
-		if @lesson.save 
-			redirect_to root_path
-		else
-			render 'new'
-		end
-
+		@w_day = params[:day]
 	end
 
 	def create
@@ -78,7 +72,7 @@ class LessonsController < ApplicationController
 		end
 
 		def pattern_lesson_params
-			params.require(:lesson).permit(:date, :classroom, :building, :user_id, :subject_id, :start_time, :topic, :start_date, :end_date)
+			params.require(:lesson).permit(:date, :classroom, :building, :user_id, :subject_id, :start_time, :topic, :day)
 		end
 
 		def find_user_id

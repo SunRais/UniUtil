@@ -1,18 +1,12 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			<div class="post-info">
-				<h2 class="post-titolo"><%= @subject.nome %> (<%= @subject.cfu %> CFU) </h2>
-				<p class="post-contenuto"><%= @subject.descrizione %></p>
-			</div>
-		</div>
-	</div>
-	<div class="links btn-group">
-		<%= link_to "Indietro", root_path, class: "btn btn-custom" %>
-
-		<% if user_signed_in? %>
-				<%= link_to "Modifica", edit_subject_path(@subject), class: "btn btn-custom" %>
-				<%= link_to "Elimina", subject_path(@subject), method: :delete, data: { confirm: "Confermi?" }, class: "btn btn-custom" %>
-		<% end %>
-	</div>
-</div>
+Corso: <%= @subject.name %><br>
+CFU: <%= @subject.cfu %><br>
+Descrizione corso: <%= @subject.description %><br>
+Numero lezioni: <%= @subject.duration %><br>
+Professore: <br><br>
+<% if user_signed_in? %>
+	<% if !@followed %>
+  		<a href="<%= @subject.id %>/follow"> Segui </a>
+  	<% else %>
+  		<a> Non seguire più </a>
+  	<% end %>
+<% end %>

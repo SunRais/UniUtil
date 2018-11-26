@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_081817) do
+ActiveRecord::Schema.define(version: 2018_10_10_085007) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "date"
@@ -116,6 +116,15 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.integer "user_id"
   end
 
+  create_table "subjects_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
+    t.index ["user_id"], name: "index_subjects_users_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -129,7 +138,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
     t.boolean "is_admin", default: false, null: false
     t.boolean "is_professor", default: false, null: false
     t.string "province", null: false
-    t.integer "course_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -149,4 +157,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_081817) do
 
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
+  add_foreign_key "subjects_users", "subjects"
+  add_foreign_key "subjects_users", "users"
 end
