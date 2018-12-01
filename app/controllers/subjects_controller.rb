@@ -1,56 +1,36 @@
 class SubjectsController < ApplicationController
-
-	before_action :find_subject, only: [:show, :edit, :update, :destroy]
+	before_action :find_subject, only: [:show, :follow, :edit, :update, :destroy]
 
 	def index
 		if params[:course].blank?
-			@subjects = Subject.all.order("nome ASC")
+			if params[:search].blank?
+				@subjects = Subject.all.order(:name)
+			else
+				@subjects = Subject.where("name LIKE ? ","%#{params[:search]}%").order(:name)
+			end
 		else
-
+			@course = Course.find_by(name: params[:course])
+			@subjects = @course.subjects
 		end
+	end
+
+	def index_followed
+		@subjects = current_user.subjects
 	end
 
 	def show
+		@followed = current_user.subjects.exists?(@subject.id)
 	end
 
-	def new
-		@subject = Subject.new
+	def follow
+		@user = current_user
+		@user.subjects << @subject
+		redirect_to subjects_path
 	end
-
-	def create
-		@subject = Subject.new(subject_params)
-		if @subject.save 
-			redirect_to root_path
-		else
-			render 'new'
-		end
-	end
-
-	def edit
-
-	end
-
-	def update
-		if @subject.update(subject_params)
-			redirect_to subject_path(@subject)
-		else
-			render 'edit'
-		end
-	end
-
-	def destroy
-		@subject.destroy
-		redirect_to root_path
-	end 
 
 	private
-
-		def subject_params
-			params.require(:subject).permit(:nome, :cfu, :descrizione, courses_ids: [])
-		end
 
 		def find_subject
 			@subject = Subject.find(params[:id])
 		end
-
 end

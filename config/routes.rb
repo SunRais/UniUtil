@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :lessons
   get '/lessons/pattern/new_pattern', to:'lessons#new_pattern'
   post '/lessons/pattern', to: 'lessons#create_pattern'
-  
+  get '/subjects/:id/follow', to: 'subjects#follow'
+  get '/subjects/follow/index', to: 'subjects#index_followed'
   root 'welcome#index'
 end

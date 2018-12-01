@@ -1,5 +1,5 @@
 class Lesson < ApplicationRecord
-  attr_accessor :start_date, :end_date
+  attr_accessor :days
   belongs_to :user
   belongs_to :subject
 end

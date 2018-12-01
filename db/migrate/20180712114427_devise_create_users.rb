@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :is_admin,           null: false, default: false
       t.boolean :is_professore,      null: false, default: false
       t.string :province,           null: false
-      t.integer :course_id,         null: true
+      #t.integer :course_id,         null: true
       #t.integer :degree_appeals_id, null: false, default: "0"
 
       

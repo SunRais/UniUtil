@@ -1,7 +1,7 @@
 <div class="center">
   <div class="col-md-6 col-md-offset-3">
     <div class="signup-form">
-		<center><h2> Modifica lezione </h2></center>
+		<center><h2>Crea serie di lezioni per il semestre corrente</h2></center>
 		<%= simple_form_for @lesson, :url => lessons_pattern_path, :html => { :multipart => true } do |f| %>
 			<%= f.error_notification %>
 			<div class="form-inputs">
@@ -9,9 +9,7 @@
 			 	<%= f.input :classroom, label: "Aula", as: :select, collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] %>
 			 	<%= f.input :building, label: "Edificio", as: :select, collection: ["Cattedrale", "Blocco F"] %>
 			 	<%= f.input :start_time, :as => :time, label:"Ora inizio lezione", :minute_step => 30 %>
-			 	<%= f.input :start_date, as: :date, html5: true, label:"Data prima lezione" %>
-			 	<%= f.input :end_date, as: :date, html5: true, label:"Data ultima lezione" %>
-			 	* Le lezioni del semestre corrente cominciano il 20 Settembre 2018 e terminano il 23 Dicembre 2018
+			 	<%= f.collection_check_boxes :days, [[1,'Lunedì'],[2,'Martedì'],[3,'Mercoledì'],[4,'Giovedì'],[5,'Venerdì']], :first, :last %>
 			</div>
 			<div class="form-actions">
 				<%= f.button :submit, :class => 'btn-custom2' %>

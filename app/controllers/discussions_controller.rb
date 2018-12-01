@@ -5,13 +5,16 @@ class DiscussionsController < ApplicationController
   	if params[:search]
   		@discussions = Discussion.where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
   	elsif params[:discussion_type]
-		@discussion_type = params[:discussion_type]
-	 	@discussions = Discussion.where(:discussion_type => @discussion_type).order("created_at DESC")
-	elsif params[:user_id]
-		@discussions = Discussion.where(:user_id => params[:user_id]).order("created_at DESC")
-	else				
-		@discussions = Discussion.all.order("created_at DESC")
-	end
+			@discussion_type = params[:discussion_type]
+			if @discussion_type == "Gruppi di studio"
+  			redirect_to groups_path
+  		end
+	 		@discussions = Discussion.where(:discussion_type => @discussion_type).order("created_at DESC")
+		elsif params[:user_id]
+			@discussions = Discussion.where(:user_id => params[:user_id]).order("created_at DESC")
+		else				
+			@discussions = Discussion.all.order("created_at DESC")
+		end
   end
   
   def new
@@ -51,8 +54,8 @@ class DiscussionsController < ApplicationController
   end
   
   def destroy
-  		#Comment.where(:discussion_id => @discussion.id).destroy_all
-  		@discussion.destroy
+  	#Comment.where(:discussion_id => @discussion.id).destroy_all
+  	@discussion.destroy
 		redirect_to discussions_path
   end
   

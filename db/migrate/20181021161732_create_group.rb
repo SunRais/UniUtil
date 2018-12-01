@@ -4,8 +4,7 @@ class CreateGroup < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :current_students
       t.integer :max_students
-      t.integer :user_id
-      t.string :status
+      t.timestamps
     end
   end
 end

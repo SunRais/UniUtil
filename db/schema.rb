@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_161732) do
+ActiveRecord::Schema.define(version: 2018_11_27_174229) do
 
-  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date"
     t.string "place"
     t.text "note"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "description"
     t.integer "discussion_id"
     t.integer "user_id"
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "typology"
     t.text "description"
   end
 
-  create_table "courses_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "courses_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "course_id"
     t.bigint "subject_id"
     t.datetime "created_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.index ["subject_id"], name: "index_courses_subjects_on_subject_id"
   end
 
-  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
     t.text "description"
     t.integer "user_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.string "discussion_type"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
     t.string "place"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "cost"
     t.datetime "deadline"
     t.integer "user_id"
@@ -74,15 +74,25 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "current_students"
     t.integer "max_students"
-    t.integer "user_id"
-    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id"
+    t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id"
+  end
+
+  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
     t.string "classroom"
@@ -94,7 +104,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.string "badge_number"
     t.string "code"
@@ -103,7 +113,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result"
     t.string "state"
     t.integer "subject_id"
@@ -113,7 +123,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "cfu"
     t.text "description"
@@ -125,7 +135,16 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.integer "user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "subjects_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
+    t.index ["user_id"], name: "index_subjects_users_on_user_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "name", null: false
@@ -138,7 +157,6 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
     t.boolean "is_admin", default: false, null: false
     t.boolean "is_professor", default: false, null: false
     t.string "province", null: false
-    t.integer "course_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -158,4 +176,6 @@ ActiveRecord::Schema.define(version: 2018_10_21_161732) do
 
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
+  add_foreign_key "subjects_users", "subjects"
+  add_foreign_key "subjects_users", "users"
 end

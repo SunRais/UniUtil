@@ -6,7 +6,6 @@
         <%= f.error_notification %>
             <%= devise_error_messages! %>
             <div class="form-inputs">
-                <%= f.input :code, required: true, label: "Codice identificativo", hint: ("Codice univoco ricevuto in segreteria all'immatricolazione."), autofocus: true %>
                 <%= f.input :email, required: true, hint: ("Usare mail terminante con @student.unife.it ricevuta in segreteria."), autofocus: true %>
                 <%= f.input :password, required: true, hint: ("Minimo #{@minimum_password_length} caratteri" if @minimum_password_length) %>
                 <%= f.input :password_confirmation, required: true, label: "Conferma password" %>
@@ -18,7 +17,6 @@
                 <%= f.input :city, required: true, label: "Città" %>
                 <%= f.input :province, required: true, label: "Provincia" %>
                 <%= f.input :telephone_number, required: true, label: "Recapito telefonico" %>
-                <%= f.input :course_id, label: "Corso di studio", as: :select, collection: [['1','Laurea magistrale in Ingegneria Iformatica e della automazione'],['2','Laurea triennale in Ingegneria Elettronica e Informatica'],['3','Laurea triennale in Ingegneria civile']], label_method: :second, value_method: :first %>
                 <%= f.input :avatar, as: :file %>
           </div>
             <div class="form-actions">

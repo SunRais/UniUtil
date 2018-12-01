@@ -24,7 +24,7 @@
 					<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
 				</li>
 				<li>
-					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppi di studio') %>
+					<%= link_to "Gruppi di studio", groups_path %>
 				</li>
 				<li>
 					<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
@@ -35,6 +35,9 @@
 			</ul>
 		</div>
 		<div class="col">
+			<%= link_to "Crea Gruppo", new_group_path %>
+		</div>
+		<div class="col">
 			<%= form_tag(discussions_path, method: :get) do %>
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag 'Cerca', name: nil%>	
@@ -42,16 +45,34 @@
 		</div>
 	</div>
 </nav>
+
 <div>
-	<% if @discussions %>
-		<% @discussions.each do |discussion| %>
-			<h2><%= link_to discussion.title, discussion_path(discussion) %></h2>
+	<%if @my_groups %>
+		<h1>
+			I tuoi gruppi:
+		</h1>
+		<% @my_groups.each do |my_group|%>
+			<h2><%= link_to my_group.name , group_path(my_group)%></h2>
+		<%end%>
+	<% else %>
+		<h2>
+			Non sei iscritto ancora a nessun gruppo.
+		</h2>
+	<% end %>
+</div>
+<div>
+	<% if @groups %>
+		<h1>
+			Gruppi:
+		</h1>
+		<% @groups.each do |group| %>
+			<h2><%= link_to group.name, group_path(group) %></h2>
 		<% end %>
 	<% else %>
-	<h2> 
-		Non ci sono discussioni.
-	</h2>
-<% end %>
+		<h2> 
+			Non ci sono gruppi.
+		</h2>
+	<% end %>
 </div>
 <div>
 	Numeri per far scorrere le pagine

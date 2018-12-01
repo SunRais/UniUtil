@@ -5,6 +5,7 @@ class User < ApplicationRecord
   belongs_to :course, optional: true, :foreign_key => "course_id"
   #belongs_to :degree_appeal
   has_and_belongs_to_many :appeals
+  has_and_belongs_to_many :subjects
   has_many :discussions
   has_many :comments
   has_many :lessons
