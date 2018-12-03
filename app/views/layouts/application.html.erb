@@ -93,32 +93,18 @@
                                         <a href="/subjects/follow/index">Corsi seguiti</a>
                                     </li>
                                 </ul>
-                                <a href="#">
-                                    <i class="fas fa-clock"></i>
-                                    Orario Settimanale
-                                </a>
                         </li>
                             <% end %>
-                        <li>
-                            <a href="#page2Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-copy"></i>
-                                Lezioni
-                            </a>
-                            <ul class="collapse list-unstyled" id="page2Submenu">
-                                <% if current_user.is_professor %>
-                                    <li>
-                                        <a href="/lessons/new">Crea una lezione</a>
-                                    </li>
-                                <% end %>
-                                <li>
-                                    <a href="/lessons">Le mie lezioni</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
                             <a href="/discussions">
                                 <i class="fas fa-address-card"></i>
                                 Bacheca
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/groups">
+                                <i class="fas fa-users"></i>
+                                Gruppi di Studio
                             </a>
                         </li>
                     </ul>
