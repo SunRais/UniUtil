@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources  :subjects
   resources :groups
   resources  :discussions do
-	resources :comments
+    resources :comments
   end
   resources :appeals
   resources :lessons

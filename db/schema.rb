@@ -76,10 +76,12 @@ ActiveRecord::Schema.define(version: 2018_11_27_174229) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.bigint "discussion_id"
     t.integer "current_students"
     t.integer "max_students"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_groups_on_discussion_id", unique: true
   end
 
   create_table "groups_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -176,6 +178,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_174229) do
 
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
+  add_foreign_key "groups", "discussions"
   add_foreign_key "subjects_users", "subjects"
   add_foreign_key "subjects_users", "users"
 end

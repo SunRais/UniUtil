@@ -1,0 +1,5 @@
+<%= simple_form_for([@discussion, @discussion.comments.build]) do |f| %>
+  <%= f.input :description, label: false %>
+  <%= f.input :discussion_id, :as => :hidden, :input_html => {:value => @discussion_id} %>
+  <%= f.button :submit, 'Commenta'%>
+<% end %>

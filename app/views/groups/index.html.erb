@@ -52,7 +52,7 @@
 			I tuoi gruppi:
 		</h1>
 		<% @my_groups.each do |my_group|%>
-			<h2><%= link_to my_group.name , group_path(my_group)%></h2>
+			<h2><%= link_to my_group[1] , group_path(my_group[0])%></h2>
 		<%end%>
 	<% else %>
 		<h2>
@@ -62,12 +62,27 @@
 </div>
 <div>
 	<% if @groups %>
-		<h1>
-			Gruppi:
-		</h1>
-		<% @groups.each do |group| %>
-			<h2><%= link_to group.name, group_path(group) %></h2>
-		<% end %>
+	<div class="row">
+		<div class = "col">
+			<div class = "row">
+				<div class = "col">
+					<h1>
+						Gruppi:
+					</h1>
+				</div>
+			</div>
+			<% @groups.each do |group| %>
+			<div class = "row">
+				<div class="col">
+					<h2><%= group.name %></h2>
+				</div>
+				<div class = "col">
+					
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
 	<% else %>
 		<h2> 
 			Non ci sono gruppi.
