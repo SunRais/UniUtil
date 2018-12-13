@@ -1,27 +1,27 @@
-<div class="container emp-profile">
-  <form action="/subjects">
-  		<input type="text" placeholder="Cerca.." name="search">
-  		<button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-  <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Corso di Studio
-    </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <%= link_to "Tutte i corsi", subjects_path, class: "link" %><br>
-      <% Course.all.each do |course| %>
-        <%= link_to course.name, subjects_path(course: course.name), class: "link" %><br>
-      <% end %>
-    </div>
+<form action="/subjects">
+		<input type="text" placeholder="Cerca.." name="search">
+		<button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Corso di Studio
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <%= link_to "Tutte i corsi", subjects_path, class: "link" %><br>
+    <% Course.all.each do |course| %>
+      <%= link_to course.name, subjects_path(course: course.name), class: "link" %><br>
+    <% end %>
   </div>
-  <% if @subjects.count == 0 %>
-  	<h4>Non ci sono materie per questo corso di studio.</h4>
-  <% else %>
-  	<% @subjects.each do |subject| %>
-    		<a href="/subjects/<%= subject.id %>">
-    		  <b><%= subject.name %></b> ()
-    		</a>
-        <br>
-  	<% end %>
-  <% end %>
 </div>
+<% if @subjects.count == 0 %>
+	<h4>Non ci sono materie per questo corso di studio.</h4>
+<% else %>
+  <ul>
+  	<% @subjects.each do |subject| %>
+    		<a href="/subjects/<%= subject[0] %>">
+    		  <li><b><%= subject[1] %></b> di <%= subject[13] %> <%= subject[14] %></li>
+    		</a>
+  	<% end %>
+  </ul>
+<% end %>
+

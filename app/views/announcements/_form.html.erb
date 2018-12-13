@@ -1,0 +1,5 @@
+<%= simple_form_for([@subject, @subject.announcements.build]) do |f| %>
+  <%= f.input :title, label: "Titolo" %>
+  <%= f.input :content, label: "Descrizione" %>
+  <%= f.button :submit, 'Pubblica'%>
+<% end %>

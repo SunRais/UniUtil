@@ -13,10 +13,13 @@ class UsersController < ApplicationController
 	private
 		def find_user
 			@user = User.find(params[:id])
-			#@course = Course.find(@user.course_id)
 		end
 
 		def authorize_current_user
-    		redirect_to(root_path) unless current_user.id == @user.id
+			if current_user.id != @user.id
+				if !@user.is_professor
+    				redirect_to(root_path) 
+    			end
+    		end
 		end
 end
