@@ -8,13 +8,14 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
-		if params[:discussion_id]
-			@comment.discussion_id = @discussion.id
-			if @comment.save
-				redirect_to discussion_path(@discussion)
-			else
-				render 'new'
+		if @comment.save
+			(@discussion.users.uniq - [current_user]).each do |user|
+				Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @discussion)
 			end
+			if current_user != @discussion.user
+				Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
+			end
+			redirect_to discussion_path(@discussion)
 		else
 			@comment.group_id = @group.id
 			if @comment.save

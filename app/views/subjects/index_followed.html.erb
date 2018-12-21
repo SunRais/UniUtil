@@ -2,9 +2,6 @@
 	<h4>Non segui attualmente nessun corso.</h4>
 <% else %>
 	<% @subjects.each do |subject| %>
-		<a href="/subjects/<%= subject.id %>">
-		  Corso: <%= subject.name %> Professore: 
-		</a>
-    <br>
+		<a href="/subjects/<%= subject.id %>"> Corso: <%= subject.name %> </a><br>
 	<% end %>
 <% end %>

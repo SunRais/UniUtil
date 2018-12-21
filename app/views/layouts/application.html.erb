@@ -71,7 +71,7 @@
                 <% if user_signed_in? %>
                     <ul class="list-unstyled components">
                         <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle2">
                                 <i class="fas fa-home"></i> Area Riservata
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -81,8 +81,8 @@
                         </li>
                         <li>
                             <% if current_user.is_professor == false %>
-                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                    <i class="fas fa-copy"></i>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle2">
+                                    <i class="fas fa-school"></i>
                                     Panoramica Corsi
                                 </a>
                                 <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -93,32 +93,18 @@
                                         <a href="/subjects/follow/index">Corsi seguiti</a>
                                     </li>
                                 </ul>
-                                <a href="#">
-                                    <i class="fas fa-clock"></i>
-                                    Orario Settimanale
-                                </a>
                         </li>
                             <% end %>
-                        <li>
-                            <a href="#page2Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-copy"></i>
-                                Lezioni
-                            </a>
-                            <ul class="collapse list-unstyled" id="page2Submenu">
-                                <% if current_user.is_professor %>
-                                    <li>
-                                        <a href="/lessons/new">Crea una lezione</a>
-                                    </li>
-                                <% end %>
-                                <li>
-                                    <a href="/lessons">Le mie lezioni</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
                             <a href="/discussions">
                                 <i class="fas fa-address-card"></i>
                                 Bacheca
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/groups">
+                                <i class="fas fa-users"></i>
+                                Gruppi di Studio
                             </a>
                         </li>
                     </ul>
@@ -142,6 +128,8 @@
             <!-- Page Content Holder -->
             <div id="content">
 
+      				<div class="row">
+      					<div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
 
@@ -153,16 +141,25 @@
                         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-justify"></i>
                         </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="https://de.unife.it/it">Unife</a>
-                                </li>
-                            </ul>
+                        <div>
+                        	Università degli studi di Ferrara
                         </div>
                     </div>
                 </nav>
+              </div>
+              <div class="col">
+                 <div class="dropdown">
+	                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	                      <i class="fas fa-bell"></i>
+	                  </button>
+	                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	                      <a class="dropdown-item" href="#">Action</a>
+	                      <a class="dropdown-item" href="#">Another action</a>
+	                      <a class="dropdown-item" href="#">Something else here</a>
+	                  </div>
+	              </div>
+	            </div>
+	          </div>
                 <p class="notice"><%= notice %></p>
                 <p class="alert"><%= alert %></p>
                 <div class="container">

@@ -1,5 +1,5 @@
 <%= simple_form_for @discussion do |d| %>
-  <%= select_tag(:discussion_type, options_for_select([['Domande generali','Domande generali'],['Avvisi dei professori', 'Avvisi dei professori'],['Materiale didattico','Materiale didattico']]), :prompt => "Seleziona un tipo di discussione") %>
+  <%= select_tag(:discussion_type, options_for_select([['Domande generali','Domande generali'],['Gruppo di studio','Gruppo di studio'],['Avvisi dei professori', 'Avvisi dei professori'],['Materiale didattico','Materiale didattico']]), :prompt => "Seleziona un tipo di discussione") %>
   <%= d.input :title, label: "Titolo"%>
   <%= d.input :description, label: "Descrizione" %>
   <%= d.button :submit %>

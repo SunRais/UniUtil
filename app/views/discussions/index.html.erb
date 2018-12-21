@@ -35,9 +35,6 @@
 			</ul>
 		</div>
 		<div class="col">
-			<%= link_to "Crea Gruppo", new_group_path %>
-		</div>
-		<div class="col">
 			<%= form_tag(discussions_path, method: :get) do %>
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag 'Cerca', name: nil%>	

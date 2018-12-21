@@ -2,11 +2,20 @@ Corso: <%= @subject.name %><br>
 CFU: <%= @subject.cfu %><br>
 Descrizione corso: <%= @subject.description %><br>
 Numero lezioni: <%= @subject.duration %><br>
-Professore: <br><br>
+Professore: <%= link_to @prof.name , user_path(@prof.id)%> <%= link_to @prof.surname , user_path(@prof.id)%> <br>
+<br><br>
 <% if user_signed_in? %>
 	<% if !@followed %>
   		<a href="<%= @subject.id %>/follow"> Segui </a>
   	<% else %>
-  		<a> Non seguire più </a>
+  		<a href="<%= @subject.id %>/unfollow"> Non seguire più </a>
   	<% end %>
+<% end %>
+
+<% if @followed or current_user.id == @subject.user_id %>
+	<%= render @subject.announcements %>
+<% end %> 
+
+<% if current_user.id == @subject.user_id %>
+	<%= render :partial => 'announcements/form' %> 
 <% end %>
