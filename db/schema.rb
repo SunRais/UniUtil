@@ -82,26 +82,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_091953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.bigint "discussion_id"
-    t.integer "current_students"
-    t.integer "max_students"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discussion_id"], name: "index_groups_on_discussion_id", unique: true
-  end
-
-  create_table "groups_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id"
-    t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id"
-  end
-
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
@@ -197,7 +177,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_091953) do
 
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
-  add_foreign_key "groups", "discussions"
   add_foreign_key "subjects_users", "subjects"
   add_foreign_key "subjects_users", "users"
 end
