@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
   resources :appeals
   resources :lessons
-  resources :notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   get '/subjects/:id/follow', to: 'subjects#follow'
   get '/subjects/:id/unfollow', to: 'subjects#unfollow'
   get '/subjects/follow/index', to: 'subjects#index_followed'

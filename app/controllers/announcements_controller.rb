@@ -10,6 +10,9 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
     @announcement.subject_id = @subject.id
     if @announcement.save
+      (@subject.users.uniq - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "published an", notifiable: @announcement)
+      end
       redirect_to subject_path(@subject)
     else
       render 'new'

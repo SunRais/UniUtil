@@ -10,11 +10,11 @@ class CommentsController < ApplicationController
 		@comment.discussion_id = @discussion.id
 		@comment.user_id = current_user.id
 		if @comment.save
-			(@discussion.users.uniq - [current_user]).each do |user|
-				Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @discussion)
+			(@discussion.users.uniq - [current_user] - [@discussion.user]).each do |user|
+				Notification.create(recipient: user, actor: current_user, action: "posted a ", notifiable: @comment)
 			end
 			if current_user != @discussion.user
-				Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
+				Notification.create(recipient: @discussion.user, actor: current_user, action: "posted a ", notifiable: @comment)
 			end
 			redirect_to discussion_path(@discussion)
 		else
