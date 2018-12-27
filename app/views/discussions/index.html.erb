@@ -1,5 +1,6 @@
-<nav class="navbar superior-bar navbar-default">
-	<div>
+
+<nav class="navbar superior-bar navbar-default row">
+	<div class="col-8" id="links-superior-bar">
 		<ul>
 			<li>
 				<%= link_to "Nuova discussione", new_discussion_path %>
@@ -8,9 +9,15 @@
 				<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
 			</li>
 			<li>
-				Preferiti
+				<%= link_to "Preferiti", discussions_path %>
 			</li>
 		</ul>
+	</div>
+	<div class="col-4">
+		<%= form_tag(discussions_path, method: :get) do %>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag 'Cerca', name: nil%>	
+		<% end %>
 	</div>
 </nav>
 <nav class="type-discussions">
@@ -34,21 +41,14 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col">
-			<%= link_to "Crea Gruppo", new_group_path %>
-		</div>
-		<div class="col">
-			<%= form_tag(discussions_path, method: :get) do %>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag 'Cerca', name: nil%>	
-			<% end %>
-		</div>
 	</div>
 </nav>
 <div>
 	<% if @discussions %>
 		<% @discussions.each do |discussion| %>
-			<h2><%= link_to discussion.title, discussion_path(discussion) %></h2>
+			<div class="discussion-box">
+				<%= link_to discussion.title, discussion_path(discussion) %>
+			</div>
 		<% end %>
 	<% else %>
 	<h2> 

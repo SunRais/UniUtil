@@ -9,11 +9,11 @@ class DiscussionsController < ApplicationController
 			if @discussion_type == "Gruppi di studio"
   			redirect_to groups_path
   		end
-	 		@discussions = Discussion.where(:discussion_type => @discussion_type).order("created_at DESC")
+	 		@discussions = Discussion.where(:discussion_type => @discussion_type).where('title is not null').order("created_at DESC")
 		elsif params[:user_id]
-			@discussions = Discussion.where(:user_id => params[:user_id]).order("created_at DESC")
+			@discussions = Discussion.where(:user_id => params[:user_id]).where('title IS NOT null').order("created_at DESC")
 		else				
-			@discussions = Discussion.all.order("created_at DESC")
+			@discussions = Discussion.where('title IS NOT null').all.order("created_at DESC")
 		end
   end
   

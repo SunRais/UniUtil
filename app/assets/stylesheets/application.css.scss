@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "discussions";
 
 @mixin background-tile {
     box-sizing: border-box;
@@ -463,4 +464,7 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
   }
 }
 
-
+#content-container {
+    margin-left: 5%;
+    width: 90%;
+}
