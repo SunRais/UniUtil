@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
+		@comment.discussion_id = @discussion.id
 		if @comment.save
 			(@discussion.users.uniq - [current_user]).each do |user|
 				Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @discussion)
@@ -16,14 +17,6 @@ class CommentsController < ApplicationController
 				Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
 			end
 			redirect_to discussion_path(@discussion)
-		else
-			@comment.group_id = @group.id
-			if @comment.save
-				redirect_to group_path(@group)
-			else
-				puts @comment.errors.full_messages
-				render 'new'
-			end
 		end
   end
 
@@ -42,11 +35,7 @@ class CommentsController < ApplicationController
 		end
 		
 		def find
-			if params[:discussion_id]
-				@discussion = Discussion.find(params[:discussion_id])
-			else
-				@group = Group.find(params[:group_id])
-			end
+			@discussion = Discussion.find(params[:discussion_id])
 		end
 		
 		def find_user

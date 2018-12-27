@@ -31,7 +31,7 @@
 					<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
 				</li>
 				<li>
-					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppi di studio') %>
+					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
 				</li>
 				<li>
 					<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
@@ -45,10 +45,23 @@
 </nav>
 <div>
 	<% if @discussions %>
+		<% %>
 		<% @discussions.each do |discussion| %>
 			<div class="discussion-box">
-				<%= link_to discussion.title, discussion_path(discussion) %>
+				<div class="row">
+					<div class="col">
+						<%= link_to discussion.title, discussion_path(discussion) %>
+					</div>
+					<div class="col">
+						<%= discussion.user.name %>
+						<%= discussion.user.surname %>
+					</div>
+					<div class="col">
+						<%= @comments_number[discussion.id] %>
+					</div>
+				</div>
 			</div>
+			<%  %>
 		<% end %>
 	<% else %>
 	<h2> 

@@ -1,0 +1,13 @@
+<div>
+	<% comments.each do |c| %>
+	<div class="row comment">
+		<div class="col-sm-2 comment-name">
+			<%= c.user.name %>
+			<%= c.user.surname%>
+		</div>
+		<div class="col-sm-10">
+			<%= c.description %>
+		</div>
+	</div>
+	<% end %>
+</div>

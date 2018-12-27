@@ -1,5 +1,5 @@
 // Place all the styles related to the Discussions controller here.
-// They will automatically be included in application.css.
+// They ll automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .type-discussions ul li {
@@ -27,4 +27,42 @@
 	padding-left: 2%;
 	padding-bottom: 1%;
   font-size: 240%;
+  margin-left: 3%;
+  width: 94%;
+  margin-bottom: 2%;
+}
+#discussion-show {
+	background-color: white;
+	border-radius: 8px;
+	padding-top: 1%;
+	padding-left: 2%;
+	padding-bottom: 1%;
+}
+#box-name {
+	border-right: 5px solid #7386D5;	
+}
+#show-discussion {
+	padding-left: 5%;
+	color: black;
+}
+#discussion-description{
+	color: black;
+	font-family: 'Poppins';
+}
+#user-name {
+	text-align: center;
+}
+.comment{
+	margin: 0;
+	margin-top: 1%;
+	background-color: white;
+	padding-top: 1%;
+	padding-bottom:1%;
+	border-radius: 8px;
+}
+.comment-name {
+	border-right: 5px solid #7386D5;
+}
+#form-discussion {
+	margin-top: 1%;
 }

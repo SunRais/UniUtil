@@ -4,17 +4,21 @@ class DiscussionsController < ApplicationController
   def index
   	if params[:search]
   		@discussions = Discussion.where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
+  		sql = "SELECT id FROM discussions where title LIKE " + params[:search].to_s + " order by created_at DESC"
   	elsif params[:discussion_type]
 			@discussion_type = params[:discussion_type]
-			if @discussion_type == "Gruppi di studio"
-  			redirect_to groups_path
-  		end
 	 		@discussions = Discussion.where(:discussion_type => @discussion_type).where('title is not null').order("created_at DESC")
+			sql = "SELECT id from discussions where discussion_type LIKE '" + params[:discussion_type].to_s + "' AND title is not null order by created_at DESC"
 		elsif params[:user_id]
 			@discussions = Discussion.where(:user_id => params[:user_id]).where('title IS NOT null').order("created_at DESC")
+			sql = "SELECT id from discussions where user_id = "+ params[:user_id].to_s + " AND title IS NOT null order by created_at DESC"
 		else				
 			@discussions = Discussion.where('title IS NOT null').all.order("created_at DESC")
+			sql = "SELECT id from discussions where title is not null order by created_at DESC"
 		end
+		@discussions.includes(:user)
+		@comments_number = Discussion.comments_number(sql)
+
   end
   
   def new
@@ -22,7 +26,10 @@ class DiscussionsController < ApplicationController
   end
   
   def show
-	#@discussion = Discussion.includes(:comments, :user)
+		@comments = Discussion.includes(:comments, :user)
+		@user = Discussion.find_user(params[:id])
+		puts "stampo user"
+		puts @user[0]
   end
   
   def search 
