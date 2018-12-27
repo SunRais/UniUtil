@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'wicked'
 gem 'jquery-turbolinks'
+gem 'popper_js', '~> 1.11', '>= 1.11.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
