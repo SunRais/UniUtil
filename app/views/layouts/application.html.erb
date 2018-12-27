@@ -79,31 +79,23 @@
                             </ul>
                         </li>
                         <li>
-                            <% if current_user.is_professor == false %>
-                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                    <i class="fas fa-school"></i>
-                                    Panoramica Corsi
-                                </a>
-                                <ul class="collapse list-unstyled" id="pageSubmenu">
-                                    <li>
-                                        <a href="/subjects">Tutti i corsi</a>
-                                    </li>
-                                    <li>
-                                        <a href="/subjects/follow/index">Corsi seguiti</a>
-                                    </li>
-                                </ul>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-school"></i>
+                                Panoramica Corsi
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="/subjects">Tutti i corsi</a>
+                                </li>
+                                <li>
+                                    <a href="/subjects/follow/index">Corsi seguiti</a>
+                                </li>
+                            </ul>
                         </li>
-                            <% end %>
                         <li>
                             <a href="/discussions">
                                 <i class="fas fa-address-card"></i>
                                 Bacheca
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/groups">
-                                <i class="fas fa-users"></i>
-                                Gruppi di Studio
                             </a>
                         </li>
                     </ul>
