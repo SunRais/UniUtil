@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 @import "discussions";
+@import "subjects";
 
 @mixin background-tile {
     box-sizing: border-box;
@@ -121,6 +122,9 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+.hide-arrow::after {
+    display: none !important;
+}
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
