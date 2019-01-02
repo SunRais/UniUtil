@@ -32,3 +32,52 @@
 .course-button {
 	margin-left: 60%;
 }
+
+#detail-course{
+	background-color: white;
+	width: 80%;
+	margin: auto;
+	border-radius: 8px;
+	padding: 1%;
+}
+.align-center {
+	text-align: center;
+}
+
+.detail {
+	border-right: 5px solid #7386D5;
+}
+
+#follow {
+	border-radius: 3px;
+	background-color: #5a6268;
+	color: white;
+	margin: auto;
+	width: 4%;
+	padding: 5px 10px 5px 10px;
+	margin-top: 2% !important;
+}
+#unfollow {
+	border-radius: 3px;
+	background-color: #5a6268;
+	color: white;
+	margin: auto;
+	width: 10%;
+	padding: 5px 10px 5px 10px;
+	margin-top: 2% !important;
+}
+
+.announcements-form {
+	margin-top: 2% !important;
+	width: 80%;
+	margin: auto;	
+	background-color: white;
+	border-radius: 8px;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.announcements-publish {
+	text-align: center;
+	font-size: 240%;
+}

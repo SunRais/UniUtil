@@ -1,5 +1,18 @@
-<%= simple_form_for([@subject, @subject.announcements.build]) do |f| %>
-  <%= f.input :title, label: "Titolo" %>
-  <%= f.input :content, label: "Descrizione" %>
-  <%= f.button :submit, 'Pubblica'%>
-<% end %>
+<div class="row announcements-form">
+	<div class="col">
+		<div class="row announcements-publish">
+			<div class="col">
+				PUBBLICA AVVISO
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<%= simple_form_for([@subject, @subject.announcements.build]) do |f| %>
+		  		<%= f.input :title, label: "Titolo" %>
+		  		<%= f.input :content, label: "Descrizione" %>
+		  		<%= f.button :submit, 'Pubblica'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

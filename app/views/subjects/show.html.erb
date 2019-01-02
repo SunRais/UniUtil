@@ -1,15 +1,48 @@
-Corso: <%= @subject.name %><br>
-CFU: <%= @subject.cfu %><br>
-Descrizione corso: <%= @subject.description %><br>
-Numero lezioni: <%= @subject.duration %><br>
-Professore: <%= link_to @prof.name , user_path(@prof.id)%> <%= link_to @prof.surname , user_path(@prof.id)%> <br>
-<br><br>
+<div id="detail-course">
+	<div class="row align-center">
+		<div class="col-md-4 detail">
+			Dettagli del corso
+		</div>
+		<div class="col">
+			<div class="row align-center">
+				<div class="col">
+					Corso: <%= @subject.name %>
+				</div>
+			</div>
+			<div class="row align-center">
+				<div class="col">
+					CFU: <%= @subject.cfu %>
+				</div>
+			</div>
+			<div class="row align-center">
+				<div class="col">
+					Descrizione corso: <%= @subject.description %>
+				</div>
+			</div>
+			<div class="row align-center">
+				<div class="col">
+					Numero lezioni: <%= @subject.duration %>
+				</div>
+			</div>
+			<div class="row align-center">
+				<div class="col">		
+					Professore: <%= link_to @prof.name , user_path(@prof.id)%> <%= link_to @prof.surname , user_path(@prof.id)%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <% if user_signed_in? %>
 	<% if !@followed %>
-  		<a href="<%= @subject.id %>/follow"> Segui </a>
-  	<% else %>
-  		<a href="<%= @subject.id %>/unfollow"> Non seguire più </a>
-  	<% end %>
+	<div id="follow">
+  	<a href="<%= @subject.id %>/follow"> Segui </a>
+  </div>
+  <% else %>
+  <div id="unfollow">
+  	<a href="<%= @subject.id %>/unfollow"> Non seguire più </a>
+  </div>
+  <% end %>
 <% end %>
 
 <% if @followed or current_user.id == @subject.user_id %>
