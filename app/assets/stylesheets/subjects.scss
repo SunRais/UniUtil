@@ -9,7 +9,7 @@
 }
 #course-list ul li{
 	list-style-type: none;
-	margin-bottom: 2% !important;
+	margin-top: 2% !important;
 	background-color: white;
 	border-radius: 8px;
 	width: 100%;
@@ -77,7 +77,14 @@
 	padding-bottom: 2%;
 }
 
+.announcements-form 
+
 .announcements-publish {
 	text-align: center;
 	font-size: 240%;
+}
+
+#label-followed-course {
+	text-align: center;
+	border-bottom: 5px solid #7386D5;
 }
