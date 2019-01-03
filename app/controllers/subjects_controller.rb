@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+	before_action :authenticate_user!
+    before_action :check_prof, only: [:my_subjects]
 	before_action :find_subject, only: [:show, :follow, :unfollow, :edit, :update, :destroy]
 
 	def index
@@ -34,9 +36,17 @@ class SubjectsController < ApplicationController
 		redirect_to subjects_path
 	end
 
+	def my_subjects
+		@subjects = Subject.where(["user_id =?", @current_user.id])
+	end
+
 	private
 
 		def find_subject
 			@subject = Subject.find(params[:id])
+		end
+
+		def check_prof
+	 	  	redirect_to "/", notice: 'Non hai i permessi per visitare la pagina richiesta.' unless current_user.is_professor
 		end
 end

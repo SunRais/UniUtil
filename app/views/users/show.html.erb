@@ -18,23 +18,24 @@
                             Studente
                         <% end %>
                     </h6>
+                    <% if @user == current_user %>
                     <p class="proile-rating">
                         Creazione profilo: <%= @user.created_at.strftime("%d %B %Y") %><br>
                         Ultima modifica:   <%= @user.updated_at.strftime("%d %B %Y") %>
-                        </p>
+                    </p>
+                    <% end %>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Dati Personali</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Dati Universitari</a>
-                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2">
-              <%= link_to "Modifica dati", edit_user_registration_path, class: "btn btn-info" %>
-            </div>
+            <% if @user == current_user %>
+                <div class="col-md-2">
+                  <%= link_to "Modifica dati", edit_user_registration_path, class: "btn btn-info" %>
+                </div>
+            <% end %>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -57,15 +58,17 @@
                             <div class="col-md-6">
                                 <p><%= @user.surname %></p>
                             </div>
-                        </div>                                    
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Indirizzo</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><%= @user.address %></p>
-                            </div>
                         </div>
+                        <% if !@user.is_professor %>                                    
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Indirizzo</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= @user.address %></p>
+                                </div>
+                            </div>
+                        <% end %>
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Città</label>
@@ -82,17 +85,15 @@
                                 <p><%= @user.province %></p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Numero di telefono</label>
+                        <% if !@user.is_professor %>   
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Numero di telefono</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= @user.telephone_number %></p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p><%= @user.telephone_number %></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <% if !@user.is_professor %>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Numero di matricola</label>

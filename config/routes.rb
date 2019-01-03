@@ -16,8 +16,11 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
+
   get '/subjects/:id/follow', to: 'subjects#follow'
   get '/subjects/:id/unfollow', to: 'subjects#unfollow'
   get '/subjects/follow/index', to: 'subjects#index_followed'
+  get '/subjects/list/my_subjects', to: 'subjects#my_subjects'
+  
   root 'welcome#index'
 end
