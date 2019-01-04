@@ -49,14 +49,16 @@
 		<% @discussions.each do |discussion| %>
 			<div class="discussion-box">
 				<div class="row">
-					<div class="col">
+					<div class="col-md-7 title-discussion">
 						<%= link_to discussion.title, discussion_path(discussion) %>
 					</div>
-					<div class="col">
+					<div class="col-md-3 detail-discussion">
+						Autore:
 						<%= discussion.user.name %>
 						<%= discussion.user.surname %>
 					</div>
-					<div class="col">
+					<div class="col-md-2 detail-discussion">
+						Commenti:
 						<%= @comments_number[discussion.id] %>
 					</div>
 				</div>

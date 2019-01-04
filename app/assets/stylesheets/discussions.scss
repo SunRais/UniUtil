@@ -30,7 +30,6 @@
 	padding-top: 1%;
 	padding-left: 2%;
 	padding-bottom: 1%;
-  font-size: 240%;
   margin-left: 3%;
   width: 94%;
   margin-bottom: 2%;
@@ -119,3 +118,14 @@
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+.detail-discussion{
+  font-size: 120%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 57px;
+}
+
+.title-discussion {
+  font-size: 240%
+}
