@@ -34,15 +34,17 @@
 </div>
 
 <% if user_signed_in? %>
-	<% if !@followed %>
-	<div id="follow">
-  	<a href="<%= @subject.id %>/follow"> Segui </a>
-  </div>
-  <% else %>
-  <div id="unfollow">
-  	<a href="<%= @subject.id %>/unfollow"> Non seguire più </a>
-  </div>
-  <% end %>
+	<% if !current_user.is_professor %>
+		<% if !@followed %>
+		<div id="follow">
+	  	<a href="<%= @subject.id %>/follow"> Segui </a>
+	  </div>
+	  <% else %>
+	  <div id="unfollow">
+	  	<a href="<%= @subject.id %>/unfollow"> Non seguire più </a>
+	  </div>
+	  <% end %>
+	<% end %>
 <% end %>
 
 <% if @followed or current_user.id == @subject.user_id %>
