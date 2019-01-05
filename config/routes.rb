@@ -5,11 +5,9 @@ Rails.application.routes.draw do
   resources  :subjects do
     resources :announcements
   end
-  resources :groups
   resources  :discussions do
     resources :comments
   end
-  resources :appeals
   resources :lessons
   resources :notifications do
     collection do
