@@ -7,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<%= simple_form_for([@subject, @subject.announcements.build]) do |f| %>
+				<%= simple_form_for([@subject, @subject.announcements.build], validate: true) do |f| %>
 		  		<%= f.input :title, label: "Titolo" %>
 		  		<%= f.input :content, label: "Descrizione" %>
 		  		<%= f.button :submit, 'Pubblica'%>

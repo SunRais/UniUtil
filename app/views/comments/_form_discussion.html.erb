@@ -1,8 +1,8 @@
 <div class="row" id="form-discussion">
 	<div class="col">
-	<%= simple_form_for([@discussion, @discussion.comments.build]) do |f| %>
+	<%= simple_form_for([@discussion, @discussion.comments.build], validate: true) do |f| %>
   	<%= f.input :description, label: false %>
-  	<%= f.button :submit, 'Commenta'%>
+  	<%= f.button :submit, 'Commenta'%> 
 	<% end %>
 </div>
 <div>

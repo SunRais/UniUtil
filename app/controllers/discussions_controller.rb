@@ -26,10 +26,8 @@ class DiscussionsController < ApplicationController
   end
   
   def show
-		@comments = Discussion.includes(:comments, :user)
+		@comments = Discussion.find_comments(@discussion.id)
 		@user = Discussion.find_user(params[:id])
-		puts "stampo user"
-		puts @user[0]
   end
   
   def search 
@@ -43,7 +41,7 @@ class DiscussionsController < ApplicationController
 		if @discussion.save
 			redirect_to discussions_path
 		else
-			render 'show'
+			render 'new'
 		end
   end
   

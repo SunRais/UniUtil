@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
 				Notification.create(recipient: @discussion.user, actor: current_user, action: "posted a ", notifiable: @comment)
 			end
 			redirect_to discussion_path(@discussion)
+		else
+			redirect_to discussion_path(@discussion)
 		end
   end
 

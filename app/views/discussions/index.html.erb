@@ -59,7 +59,11 @@
 					</div>
 					<div class="col-md-2 detail-discussion">
 						Commenti:
-						<%= @comments_number[discussion.id] %>
+						<% if @comments_number[discussion.id] != nil %>
+							<%= @comments_number[discussion.id] %>
+						<% else %>
+							0
+						<% end %>
 					</div>
 				</div>
 			</div>

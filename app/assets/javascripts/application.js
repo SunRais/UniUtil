@@ -16,3 +16,5 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery.turbolinks
+//= require rails.validations
+//= require rails.validations.simple_form

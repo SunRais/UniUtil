@@ -15,7 +15,7 @@ class AnnouncementsController < ApplicationController
       end
       redirect_to subject_path(@subject)
     else
-      render 'new'
+      redirect_to subject_path(@subject)
     end 
   end
 
