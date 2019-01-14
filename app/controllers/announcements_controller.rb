@@ -26,7 +26,7 @@ class AnnouncementsController < ApplicationController
   private
   
     def announcement_params
-      params.require(:announcement).permit(:title, :content)
+      params.require(:announcement).permit(:title, :content, :file)
     end
     
     def find_subject

@@ -5,4 +5,8 @@
 	<div class="row">
 		<%= announcement.content %>
 	</div>
+	<div class="row">
+		<%= link_to 'Mostra file', announcement.file %>
+		<%= link_to 'Download file', announcement.file, download: '' %>
+	</div>
 </div>
