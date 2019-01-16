@@ -1,6 +1,6 @@
 
 <nav class="navbar superior-bar navbar-default row">
-	<div class="col-8" id="links-superior-bar">
+	<div class="col-sm-8" id="links-superior-bar">
 		<ul>
 			<li>
 				<%= link_to "Nuova discussione", new_discussion_path %>
@@ -13,7 +13,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="col-4">
+	<div class="col-sm-4">
 		<%= form_tag(discussions_path, method: :get) do %>
 		<%= text_field_tag :search, params[:search] %>
 		<%= submit_tag 'Cerca', name: nil%>	

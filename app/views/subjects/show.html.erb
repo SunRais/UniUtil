@@ -45,12 +45,12 @@
 	  </div>
 	  <% end %>
 	<% end %>
-<% end %>
-
-<% if @followed or current_user.id == @subject.user_id %>
-	<%= render @subject.announcements %>
 <% end %> 
 
 <% if current_user.id == @subject.user_id %>
 	<%= render :partial => 'announcements/form' %> 
+<% end %>
+
+<% if @followed or current_user.id == @subject.user_id %>
+	<%= render @subject.announcements %>
 <% end %>

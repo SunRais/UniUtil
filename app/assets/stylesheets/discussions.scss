@@ -10,11 +10,6 @@
 .type-discussions ul li :hover{
 	border-bottom: 2px solid #7386D5;
 }
-.superior-bar div ul li{
-	display: inline-block;
-	margin-left: 5%;
-	float: left;
-}
 .superior-bar{
 	margin-left: 0%;
 	width: 100%;
@@ -126,6 +121,36 @@
   line-height: 57px;
 }
 
-.title-discussion {
-  font-size: 240%
+  .title-discussion {
+  font-size: 240%;
+}
+@media only screen and (min-device-width:640px){
+  
+  .superior-bar div ul li{
+  display: inline-block;
+  margin-left: 5%;
+  float: left;
+
+  .title-discussion {
+  font-size: 240%;
+}
+}
+
+}
+@media only screen and (max-device-width:640px){
+  
+  .superior-bar div ul li{
+    display: block;
+    float: left;
+    width: 100%;
+  }
+
+  .title-discussion {
+  font-size: 240%;
+  text-align: center;
+
+}
+
+
+
 }
