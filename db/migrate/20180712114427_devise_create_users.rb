@@ -14,7 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :city,              null: false
       t.string :telephone_number,    null: false
       t.boolean :is_admin,           null: false, default: false
-      t.boolean :is_professore,      null: false, default: false
+      t.boolean :is_professor,      null: false, default: false
       t.string :province,           null: false
       
       ## Recoverable

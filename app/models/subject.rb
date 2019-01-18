@@ -1,9 +1,9 @@
 class Subject < ApplicationRecord
-  has_many :results
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :users
   has_many :announcements
-
+  belongs_to :user
+  
   def self.no_more_following(user_id, subject_id)
   	sql = "delete from subjects_users where  user_id = " + user_id.to_s + " and subject_id = " + subject_id.to_s
   	ActiveRecord::Base.connection.execute(sql)

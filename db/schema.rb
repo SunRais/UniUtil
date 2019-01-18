@@ -39,30 +39,20 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
   create_table "announcements", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "appeals", force: :cascade do |t|
-    t.datetime "date"
-    t.string "place"
-    t.text "note"
-    t.string "classroom"
-    t.string "is_partial"
-    t.integer "subject_id"
-    t.datetime "date_start_signing_up"
-    t.datetime "date_stop_signing_up"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_announcements_on_subject_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.text "description"
-    t.integer "discussion_id"
-    t.integer "user_id"
+    t.bigint "discussion_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_comments_on_discussion_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -83,39 +73,11 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
   create_table "discussions", force: :cascade do |t|
     t.text "title"
     t.text "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "discussion_type"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.datetime "date"
-    t.string "place"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fees", force: :cascade do |t|
-    t.integer "cost"
-    t.datetime "deadline"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "lessons", force: :cascade do |t|
-    t.date "date"
-    t.time "start_time"
-    t.string "classroom"
-    t.string "building"
-    t.text "topic"
-    t.integer "user_id"
-    t.integer "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -129,35 +91,17 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "email"
-    t.string "badge_number"
-    t.string "code"
-    t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "results", force: :cascade do |t|
-    t.integer "result"
-    t.string "state"
-    t.integer "subject_id"
-    t.integer "user_id"
-    t.string "is_confirmed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.integer "cfu"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "duration"
     t.integer "year"
     t.integer "semester"
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "subjects_users", force: :cascade do |t|
@@ -199,8 +143,13 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "announcements", "subjects"
+  add_foreign_key "comments", "discussions"
+  add_foreign_key "comments", "users"
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
+  add_foreign_key "discussions", "users"
+  add_foreign_key "subjects", "users"
   add_foreign_key "subjects_users", "subjects"
   add_foreign_key "subjects_users", "users"
 end
