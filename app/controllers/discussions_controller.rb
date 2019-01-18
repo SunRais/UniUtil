@@ -67,7 +67,7 @@ class DiscussionsController < ApplicationController
   private
   
 	def discussions_params
-	  params.require(:discussion).permit(:title, :description, :discussion_type, :search)
+	  params.require(:discussion).permit(:title, :description, :discussion_type, :search, :file)
 	end
 	
 	def find_discussion

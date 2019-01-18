@@ -6,19 +6,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false
       t.string :encrypted_password, null: false
-      t.string :nome,               null: false
-      t.string :cognome,            null: false
-      t.string :sesso,              null: false
-      t.string :numero_matricola,   null: true
-      t.string :indirizzo,          null: false
-      t.string :citta,              null: false
-      t.string :numero_telefono,    null: false
+      t.string :name,               null: false
+      t.string :surname,            null: false
+      t.string :sex,              null: false
+      t.string :badge_number,   null: true
+      t.string :address,          null: false
+      t.string :city,              null: false
+      t.string :telephone_number,    null: false
       t.boolean :is_admin,           null: false, default: false
       t.boolean :is_professore,      null: false, default: false
       t.string :province,           null: false
-      #t.integer :course_id,         null: true
-      #t.integer :degree_appeals_id, null: false, default: "0"
-
       
       ## Recoverable
       t.string   :reset_password_token
