@@ -75,9 +75,7 @@
 	border-radius: 8px;
 	padding-top: 2%;
 	padding-bottom: 2%;
-}
-
-.announcements-form 
+} 
 
 .announcements-publish {
 	text-align: center;
@@ -87,4 +85,19 @@
 #label-followed-course {
 	text-align: center;
 	border-bottom: 5px solid #7386D5;
+}
+
+.announcement-title {
+	width: intrinsic;
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	margin: auto;
+	font-size: 240%;
+}
+
+.content-announcement {
+	width: intrinsic;
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	margin: auto;
 }

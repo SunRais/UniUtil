@@ -1,12 +1,20 @@
-<div class="container">
-	<div class="row">
-		<%= announcement.title %>
-	</div>
-	<div class="row">
-		<%= announcement.content %>
-	</div>
-	<div class="row">
-		<%= link_to 'Mostra file', announcement.file %>
-		<%= link_to 'Download file', announcement.file, download: '' %>
+<div class="row announcements-form">
+	<div class="col">
+		<div class="row">
+			<div class="col">
+				<div class="announcement-title">
+					<%= announcement.title %>
+				</div>
+			</div>
+		</div>
+		<div class="row content-announcement">
+			<%= announcement.content %>
+		</div>
+		<% unless !announcement.file.nil? %>
+		<div class="row">
+			<%= link_to 'Mostra file', announcement.file %>
+			<%= link_to 'Download file', announcement.file, download: '' %>
+		</div>
+		<% end %>
 	</div>
 </div>

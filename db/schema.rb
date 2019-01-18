@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_01_14_154904) do
-
+  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
     t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
+
   create_table "subjects_users", force: :cascade do |t|
     t.bigint "subject_id"
     t.bigint "user_id"
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
     t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
     t.index ["user_id"], name: "index_subjects_users_on_user_id"
   end
+
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
