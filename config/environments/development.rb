@@ -63,11 +63,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address => "smtp.sendgrid.net",
     :port => 587,
-    :domain => 'luca.rainieri@student.unife.it',
+    :domain => 'uniutil2018@gmail.com',
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
     :authentication => 'plain',
     :enable_starttls_auto => true 
   }
+
+  Rails.application.routes.default_url_options[:host] = 'smtp.sendgrid.net'
+
 end
 
