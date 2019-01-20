@@ -60,18 +60,14 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.raise_delivery_errors = true 
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => 587,
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'LucaMail',
+    :password => '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',
     :domain => 'uniutil2018@gmail.com',
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :authentication => 'plain',
-    :enable_starttls_auto => true 
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 end
 
