@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get '/subjects/list/my_subjects', to: 'subjects#my_subjects'
   
   root 'welcome#index'
+
+  default_url_options :host => "smtp.gmail.com"
 end
