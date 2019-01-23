@@ -24,6 +24,7 @@ gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'will_paginate', '~> 3.1.0'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'sendgrid-ruby'
 
 
 group :development, :test do

@@ -91,5 +91,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'https://uniutil.herokuapp.com/' }
+  ActionMailer::Base.smtp_settings = {
+    :user_name            => "UniUtil",
+    :password             => "Ctrlaltcanc1",
+    :address              => "smtp.sendgrid.net",
+    :port                 => 587,
+    :enable_starttls_auto => true,
+    :authentication       => :plain,
+    :domain               => "uniutil.herokuapp.com"
+  }
+
 end
 
