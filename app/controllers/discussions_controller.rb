@@ -27,7 +27,7 @@ class DiscussionsController < ApplicationController
   
   def show
 		@comments = Comment.where('discussion_id = ?', "#{params[:id]}")
-		@user = User.where('id = ?',"#{@discussion.user_id}")
+		@user = User.where('id = ?',"#{@discussion.user_id}").first
   end
   
   def search 
