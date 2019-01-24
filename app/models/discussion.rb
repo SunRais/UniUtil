@@ -19,7 +19,7 @@ class Discussion < ApplicationRecord
   end
 
   def self.find_user(discussion_id)
-    sql = "SELECT u.name, u.surname FROM users as u JOIN discussions as d ON u.id = d.user_id WHERE d.id = " + discussion_id.to_s
+    sql = "SELECT u.name, u.surname, u.id FROM users as u JOIN discussions as d ON u.id = d.user_id WHERE d.id = " + discussion_id.to_s
     result = ActiveRecord::Base.connection.execute(sql)
     return result.first
   end

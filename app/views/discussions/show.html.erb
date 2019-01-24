@@ -2,8 +2,10 @@
 	<div class="row">
 		<div class="col-sm-2" id="box-name">
 			<div class="row" id="user-name">
-				<%= @user[0] %>
-				<%= @user[1]%>
+				<a href="/users/<%= @user.id %>">
+					<%= @user.name %>
+					<%= @user.surname%>
+				</a>
 			</div>
 		</div>
 		<div class="col-sm-10" id="show-discussion">
