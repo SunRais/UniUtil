@@ -15,7 +15,7 @@
 					<div class="row attachment-row">
 						<div class="col">
 							<i class="fas fa-paperclip"></i>
-							<%= link_to 'Mostra', c.file %>
+							<%= link_to c.file.filename, c.file %>
 							<div class="download-button">
 								<%= link_to 'Download file', c.file, download: '' %>
 							</div>
