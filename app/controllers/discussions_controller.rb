@@ -26,7 +26,7 @@ class DiscussionsController < ApplicationController
   end
   
   def show
-		@comments = Discussion.find_comments(@discussion.id)
+		@comments = Comment.where('discussion_id = ?', "#{params[:id]}")
 		@user = Discussion.find_user(params[:id])
   end
   
