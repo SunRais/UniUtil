@@ -29,4 +29,10 @@ class Discussion < ApplicationRecord
     sql = "delete from discussions_users where  user_id = " + user_id.to_s + " and discussion_id = " + discussion_id.to_s
     ActiveRecord::Base.connection.execute(sql)
   end
+
+  def self.check_favorite(user_id, discussion_id)
+    sql = "SELECT * FROM discussions_users where  user_id = " + user_id.to_s + " and discussion_id = " + discussion_id.to_s
+    result = ActiveRecord::Base.connection.execute(sql)
+    return result
+  end
 end

@@ -14,13 +14,13 @@
 					<h2> <%= @discussion.title %> </h2>
 				</div>
 				<div class="col-sm-4">
-					<% if @favorite %>
+					<% if !	@favorite.nil? %>
 						<a href="favorites/<%=@discussion.id %>/remove">
-							<i class="far fa-star"></i>
+							<i class="fas fa-star"></i>
 						</a>
 					<% else %>
 						<a href="favorites/<%=@discussion.id %>/add">
-							<i class="fas fa-star"></i>
+							<i class="fal fa-star"></i>
 						</a>
 					<% end %>
 				</div>
