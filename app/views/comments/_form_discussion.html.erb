@@ -2,6 +2,7 @@
 	<div class="col">
 	<%= simple_form_for([@discussion, @discussion.comments.build], validate: true) do |f| %>
   	<%= f.input :description, label: false %>
+  	<%= f.input :file, label: "Allegato" %>
   	<%= f.button :submit, 'Commenta'%> 
 	<% end %>
 </div>

@@ -1,13 +1,23 @@
 <div>
 	<% comments.each do |c| %>
 	<div class="row comment">
-		<div class="col-sm-2 comment-name">
-			<%= c['name'] %>
-			<%= c['surname'] %>
+		<div class="row">
+			<div class="col-sm-2 comment-name">
+				<%= c['name'] %>
+				<%= c['surname'] %>
+			</div>
+			<div class="col-sm-10">
+				<%= c['description'] %>
+			</div>
 		</div>
-		<div class="col-sm-10">
-			<%= c['description'] %>
-		</div>
+		<% if comment.file.attached? %>
+			<div class="row">
+				<div class="col">
+					<%= link_to 'Mostra file', comment.file %>
+					<%= link_to 'Download file', comment.file, download: '' %>
+				</div>
+			</div>
+		<% end %>
 	</div>
 	<% end %>
 </div>
