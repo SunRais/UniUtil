@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 @import "discussions";
 @import "subjects";
+@import "welcome";
 
 @mixin background-tile {
     box-sizing: border-box;
@@ -488,4 +489,18 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
     width: 10%;
     display: inline;
     margin-left: 0.5%
+}
+
+.contacts-block {
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 3% !important;
+    padding-top: 2%;
+    padding-bottom:2%;
+    width: 60%;
+    margin: auto;
+}
+.contacts-field {
+    text-align: center;
+    vertical-align: middle;
 }
