@@ -19,9 +19,14 @@
 				<%= @discussion.description %>
 			</div>
 			<% if @discussion.file.attached? %>
-				<div class="row">
-					<%= link_to 'Mostra file', @discussion.file %>
-					<%= link_to 'Download file', @discussion.file, download: '' %>
+				<div class="row attachment-row">
+					<div class="col">
+						<i class="fas fa-paperclip"></i>
+						<%= link_to @discussion.file.filename, @discussion.file %>
+						<div class="download-button">
+							<%= link_to 'Download file', @discussion.file, download: '' %>
+						</div>
+					</div>
 				</div>
 			<% end %>
 			<% if @discussion.user_id == current_user.id%>
