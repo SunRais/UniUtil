@@ -27,7 +27,6 @@ class DiscussionsController < ApplicationController
   
   def show
   		@favorite = Discussion.check_favorite(current_user.id, @discussion.id)
-  		puts @favorite
 		@comments = Comment.where('discussion_id = ?', "#{params[:id]}")
 		@user = User.where('id = ?',"#{@discussion.user_id}").first
   end
@@ -67,8 +66,7 @@ class DiscussionsController < ApplicationController
   end
 
   def add_to_favorites
-  	@user = current_user
-	@user.discussions << @discussion
+  	Discussion.add_to_my_favorites(current_user.id, @discussion.id)
 	redirect_to discussion_path(@discussion)
   end
 
