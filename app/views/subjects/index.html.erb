@@ -23,8 +23,8 @@
 <div id="course-list">
   <ul>
   	<% @subjects.each do |subject| %>
-    		<a href="/subjects/<%= subject[0] %>">
-    		  <li><b><%= subject[0] %></b> di <%= subject[1] %> <%= subject[2] %></li>
+    		<a href="/subjects/<%= subject[id] %>">
+    		  <li><b><%= subject[subject] %></b> di <%= subject[name] %> <%= subject[surname] %></li>
     		</a>
   	<% end %>
   </ul>
