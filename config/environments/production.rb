@@ -102,6 +102,7 @@ Rails.application.configure do
                                         password: ENV['SENDGRID_API_KEY'],
                                         authentication: :login,
                                         enable_starttls_auto: true
+                                        domain: 'heroku.com'
                                       }
    config.action_mailer.perform_deliveries = true
    config.action_mailer.raise_delivery_errors = true
