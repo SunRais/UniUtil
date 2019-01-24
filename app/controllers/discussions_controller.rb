@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   
-  before_action :find_discussion, only: [:show, :edit, :update, :destroy]
+  before_action :find_discussion, only: [:show, :edit, :update, :destroy, :add_to_favorites, :remove_from_favorites]
   def index
   	if params[:search]
   		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
@@ -66,7 +66,8 @@ class DiscussionsController < ApplicationController
   end
 
   def add_to_favorites
-  	Discussion.add_to_my_favorites(current_user.id, @discussion.id)
+  	@user = current_user
+  	@user.discussions << @discussion
 	redirect_to discussion_path(@discussion)
   end
 
