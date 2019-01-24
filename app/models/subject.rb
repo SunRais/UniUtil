@@ -30,4 +30,10 @@ class Subject < ApplicationRecord
     return result
   end
 
+  def self.follow_subjects(user_id, subject_id)
+    sql = "INSERT INTO subjects_users(user_id, subject_id) VALUES ("+user_id.to_s+","+subject_id.to_s+")"
+    ActiveRecord::Base.connection.execute(sql)
+  end
+
+
 end

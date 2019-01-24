@@ -30,8 +30,7 @@ class SubjectsController < ApplicationController
 	end
 
 	def follow
-		@user = current_user
-		@user.subjects << @subject
+		Subject.follow_subject(current_user.id, @subject.id)
 		redirect_to subjects_path
 	end
 
