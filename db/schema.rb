@@ -83,8 +83,6 @@ ActiveRecord::Schema.define(version: 2019_01_24_131357) do
   create_table "discussions_users", force: :cascade do |t|
     t.bigint "discussion_id"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["discussion_id"], name: "index_discussions_users_on_discussion_id"
     t.index ["user_id"], name: "index_discussions_users_on_user_id"
   end

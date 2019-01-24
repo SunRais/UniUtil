@@ -33,7 +33,7 @@ class Subject < ApplicationRecord
   def self.follow_subject(user_id, subject_id)
     t = Time.now
     time = t.strftime("%Y-%m-%d %H:%M:%S")
-    sql = "INSERT INTO subjects_users(user_id, subject_id, created_at, updated_at) VALUES ("+user_id.to_s+","+subject_id.to_s+","+time+","+time+")"
+    sql = "INSERT INTO subjects_users(user_id, subject_id) VALUES ("+user_id.to_s+","+subject_id.to_s+")"
     ActiveRecord::Base.connection.execute(sql)
   end
 
