@@ -10,7 +10,7 @@ class Subject < ApplicationRecord
   end
 
   def self.not_followed_subjects(user_id)
-  	sql = "select s.name as subject, u.name, u.surname from subjects as s join users as u on subjects.user_id = users.id where subjects.id not in (select subject_id from subjects_users where user_id = " + user_id.to_s + ") order by s.name"
+  	sql = "select s.name as subject, u.name, u.surname from subjects as s join users as u on s.user_id = u.id where s.id not in (select subject_id from subjects_users where user_id = " + user_id.to_s + ") order by s.name"
   	result = ActiveRecord::Base.connection.execute(sql)
     return result
   end
