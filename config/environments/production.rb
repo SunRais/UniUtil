@@ -102,14 +102,13 @@ Rails.application.configure do
                                         password: ENV['SENDGRID_API_KEY'],
                                         authentication: :login,
                                         enable_starttls_auto: true
-                                        :domain         => 'heroku.com'
                                       }
    config.action_mailer.perform_deliveries = true
    config.action_mailer.raise_delivery_errors = true
    config.action_mailer.default_options = {from: 'uniutil2018@gmail.com'}
 
-  config.action_mailer.default_url_options = {host: 'https://uniutil.herokuapp.com/'}
-  config.action_mailer.asset_host = 'https://uniutil.herokuapp.com/'
-
+   config.action_mailer.default_url_options = {host: 'uniutil.herokuapp.com'}
+   config.action_mailer.asset_host = 'uniutil.herokuapp.com'
 end
 
+  
