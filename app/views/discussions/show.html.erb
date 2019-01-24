@@ -15,11 +15,11 @@
 				</div>
 				<div class="col-sm-4">
 					<% if @favorite %>
-						<a href="<%= /favorites/@discussion.id %>/remove">
+						<a href="/favorites/<%=@discussion.id %>/remove">
 							<i class="fas fa-star"></i>
 						</a>
 					<% else %>
-						<a href="<%= /favorites/@discussion.id %>/add">
+						<a href="/favorites/<%=@discussion.id %>/add">
 							<i class="far fa-star"></i>
 						</a>
 					<% end %>
