@@ -25,10 +25,8 @@ class Discussion < ApplicationRecord
     return result.first
   end
 
-  def self.find_comments(discussion_id)
-    sql = "SELECT u.name, u.surname, c.description FROM users as u JOIN comments as c ON u.id = c.user_id JOIN discussions as d ON d.id = c.discussion_id WHERE d.id = '" + discussion_id.to_s + "' ORDER BY c.created_at ASC"
-    result = ActiveRecord::Base.connection.execute(sql)
-    return result
+  def self.no_more_favorite(user_id, discussion_id)
+    sql = "delete from discussions_users where  user_id = " + user_id.to_s + " and discussion_id = " + discussion_id.to_s
+    ActiveRecord::Base.connection.execute(sql)
   end
-
 end

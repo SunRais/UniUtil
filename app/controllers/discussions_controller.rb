@@ -26,6 +26,7 @@ class DiscussionsController < ApplicationController
   end
   
   def show
+  		@favorite = current_user.discussions.exists?(@discussion.id)
 		@comments = Comment.where('discussion_id = ?', "#{params[:id]}")
 		@user = User.where('id = ?',"#{@discussion.user_id}").first
   end
@@ -65,11 +66,14 @@ class DiscussionsController < ApplicationController
   end
 
   def add_to_favorites
-
+  	@user = current_user
+	@user.discussions << @discussion
+	redirect_to discussion_path(@discussion)
   end
 
   def remove_from_favorites
-
+	Discussion.no_more_favorite(current_user.id, @discussion.id)
+	redirect_to discussion_path(@discussion)
   end
   
   private
