@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   get '/subjects/list/my_subjects', to: 'subjects#my_subjects'
   get '/discussions/favorites/:id/add', to: 'discussions#add_to_favorites'
   get '/discussions/favorites/:id/remove', to: 'discussions#remove_from_favorites'
-  get '/contacts', to 'welcome#contacts'
+  get '/contacts', to: 'welcome#contacts'
   root 'welcome#index'
 end
