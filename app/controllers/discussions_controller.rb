@@ -26,7 +26,7 @@ class DiscussionsController < ApplicationController
   end
   
   def show
-  		@favorite = check_favorite(current_user.id, @discussion.id)
+  		@favorite = Discussion.check_favorite(current_user.id, @discussion.id)
 		@comments = Comment.where('discussion_id = ?', "#{params[:id]}")
 		@user = User.where('id = ?',"#{@discussion.user_id}").first
   end
