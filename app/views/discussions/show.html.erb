@@ -30,7 +30,7 @@
 				</div>
 			<% end %>
 			<% if @discussion.user_id == current_user.id%>
-			<div class="row">
+			<div class="row attachment-row">
 				<div class="manage-button">
 					<%= link_to "Modifica", edit_discussion_path(@discussion)%>
 				</div>
