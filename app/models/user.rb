@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   attr_accessor :code
   has_and_belongs_to_many :subjects
+  has_and_belongs_to_many :discussions
   has_many :discussions
   has_many :comments
   has_many :subjects

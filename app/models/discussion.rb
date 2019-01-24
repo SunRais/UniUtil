@@ -3,6 +3,7 @@ class Discussion < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :file
   has_many :users, through: :comments
+  has_and_belongs_to_many :users
 
   validates :title, presence: true, allow_blank: false
   validates :description, presence: true, allow_blank: false

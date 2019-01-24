@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_154904) do
+ActiveRecord::Schema.define(version: 2019_01_24_131357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
     t.datetime "updated_at", null: false
     t.string "discussion_type"
     t.index ["user_id"], name: "index_discussions_on_user_id"
+  end
+
+  create_table "discussions_users", force: :cascade do |t|
+    t.bigint "discussion_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_discussions_users_on_discussion_id"
+    t.index ["user_id"], name: "index_discussions_users_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -149,6 +158,8 @@ ActiveRecord::Schema.define(version: 2019_01_14_154904) do
   add_foreign_key "courses_subjects", "courses"
   add_foreign_key "courses_subjects", "subjects"
   add_foreign_key "discussions", "users"
+  add_foreign_key "discussions_users", "discussions"
+  add_foreign_key "discussions_users", "users"
   add_foreign_key "subjects", "users"
   add_foreign_key "subjects_users", "subjects"
   add_foreign_key "subjects_users", "users"

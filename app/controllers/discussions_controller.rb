@@ -63,6 +63,14 @@ class DiscussionsController < ApplicationController
   	@discussion.destroy
 		redirect_to discussions_path
   end
+
+  def add_to_favorites
+
+  end
+
+  def remove_from_favorites
+
+  end
   
   private
   

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	
 	before_action :find_user
 	before_action :authenticate_user!
-	before_action :authorize_current_user, only: [:show]
+	#before_action :authorize_current_user, only: [:show]
 
 	def show
 	end
