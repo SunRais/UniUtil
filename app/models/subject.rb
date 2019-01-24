@@ -31,7 +31,7 @@ class Subject < ApplicationRecord
   end
 
   def self.follow_subject(user_id, subject_id)
-    sql = "INSERT INTO subjects_users(user_id, subject_id, created_at, updated_at) VALUES ("+user_id.to_s+","+subject_id.to_s+","+Time.now+","+Time.now+")"
+    sql = "INSERT INTO subjects_users(user_id, subject_id, created_at, updated_at) VALUES ("+user_id.to_s+","+subject_id.to_s+","+Time.now.to_s+","+Time.now.to_s+")"
     ActiveRecord::Base.connection.execute(sql)
   end
 
