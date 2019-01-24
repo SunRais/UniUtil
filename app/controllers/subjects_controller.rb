@@ -14,6 +14,10 @@ class SubjectsController < ApplicationController
 			@course = Course.find_by(name: params[:course])
 			@subjects = Subject.not_followed_subjects_with_course(@course.id, current_user.id)
 		end
+
+		@subjects.each do |s|
+			logger.debug s[0]
+		end
 	end
 
 	def index_followed
