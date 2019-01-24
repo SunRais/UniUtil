@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources  :discussions do
     resources :comments
   end
-  resources :lessons
   resources :notifications do
     collection do
       post :mark_as_read
@@ -21,6 +20,4 @@ Rails.application.routes.draw do
   get '/subjects/list/my_subjects', to: 'subjects#my_subjects'
   
   root 'welcome#index'
-
-  default_url_options :host => "smtp.gmail.com"
 end
