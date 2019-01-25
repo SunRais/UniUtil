@@ -500,6 +500,7 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
     width: 60%;
     margin: auto;
 }
+
 .contacts-field {
     text-align: center;
     vertical-align: middle;
@@ -513,6 +514,10 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
     width: 100%;
     margin: auto;
     font-size: 170%;
-    padding-left: 8%;
+    padding-left: 5%;
     padding-top: 1%;
+}
+
+.rimg {
+    border-radius: 50%;
 }

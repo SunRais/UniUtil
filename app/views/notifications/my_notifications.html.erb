@@ -1,3 +1,21 @@
+<ul>
 <% @notifications.each do |n| %>
-	<%= n.action %>
+	<li>
+		<a href="/users/<%= n.actor.id %>"><b>
+				<%= n.actor.name %>
+				<%= n.actor.surname %>
+		</b></a>
+		<%= n.action %>
+		<% if n.action == "posted a " %>
+			<a href="/discussions/<%= n.notifiable_id %>"><b>
+			<%= n.notifiable_type %>
+			</b></a>
+		<% else%>
+			<a href="/subjects/<%= n.notifiable_id %>"><b>
+			<%= n.notifiable_type %>
+			</b></a>
+		<% end %>
+		in data <%= n.created_at.strftime("%B %d, %Y") %>
+	</li>
 <% end %>
+</ul>
