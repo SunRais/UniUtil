@@ -32,7 +32,7 @@ class SubjectsController < ApplicationController
 
 	def unfollow
 		Subject.no_more_following(current_user.id, @subject.id)
-		redirect_to subjects_path
+		redirect_to subjects_follow_index_path
 	end
 
 	def my_subjects

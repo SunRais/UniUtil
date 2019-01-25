@@ -74,6 +74,13 @@ class DiscussionsController < ApplicationController
 	Discussion.no_more_favorite(current_user.id, @discussion.id)
 	redirect_to discussion_path(@discussion)
   end
+
+  def index_favorites
+  	@discussions = Discussion.get_favorites(current_user.id)
+  	sql = "SELECT d.id FROM discussions as d join discussions_users as du on d.id = du.discussion_id where du.user_id = '"+ current_user.id.to_s + "' order by d.created_at DESC"
+  	@users = Discussion.get_users(current_user.id)
+  	@comments_number = Discussion.comments_number(sql)
+  end
   
   private
   

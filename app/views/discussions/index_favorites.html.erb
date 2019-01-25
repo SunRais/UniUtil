@@ -1,0 +1,30 @@
+<h2> LE MIE DISCUSSIONI PREFERITE</h2>
+<div>
+	<% if (@discussions.values.length > 0) %>
+		<% @discussions.each do |discussion| %>
+			<div class="discussion-box">
+				<div class="row">
+					<div class="col-md-7 title-discussion">
+						<a href="/discussions/<%= discussion['id']%>"><%= discussion['title']%></a>
+					<div class="col-md-3 detail-discussion">
+						Autore:
+						<%= @users[discussion['id']] %>
+					</div>
+					<div class="col-md-2 detail-discussion">
+						Commenti:
+						<% if @comments_number[discussion['id']] != nil %>
+							<%= @comments_number[discussion['id']] %>
+						<% else %>
+							0
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<%  %>
+		<% end %>
+	<% else %>
+	<h2> 
+		Non ci sono discussioni.
+	</h2>
+<% end %>
+</div>
