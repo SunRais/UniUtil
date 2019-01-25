@@ -14,7 +14,7 @@
 					<h2> <%= @discussion.title %> </h2>
 				</div>
 				<div class="col-sm-4">
-					<% if !(@favorite.length == 0) %>
+					<% if @favorite.values.length == 0 %>
 						<a href="favorites/<%=@discussion.id %>/add">
 							<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
 						</a>

@@ -114,8 +114,6 @@ ActiveRecord::Schema.define(version: 2019_01_24_131357) do
   create_table "subjects_users", force: :cascade do |t|
     t.bigint "subject_id"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
     t.index ["user_id"], name: "index_subjects_users_on_user_id"
   end
