@@ -38,4 +38,10 @@ class Subject < ApplicationRecord
     return result
   end
 
+  def self.check_followed(user_id, subject_id)
+    sql = "select * from subjects_users where user_id = "+user_id.to_s+" and subject_id = "+subject_id.to_s
+    result = ActiveRecord::Base.connection.execute(sql)
+    return result
+  end
+
 end
