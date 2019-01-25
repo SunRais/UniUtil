@@ -5,8 +5,8 @@
   <div id="label-followed-course"> CORSI SEGUITI: </div>
   <ul>
   	<% @subjects.each do |subject| %>
-    		<a href="/subjects/<%= subject.id %>">
-    		  <li> Corso: <%= subject.name %></li>
+    		<a href="/subjects/<%= subject['id'] %>">
+    		  <li> Corso: <%= subject['name'] %></li>
     		</a>
   	<% end %>
   </ul>

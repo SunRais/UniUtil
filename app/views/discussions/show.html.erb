@@ -14,13 +14,13 @@
 					<h2> <%= @discussion.title %> </h2>
 				</div>
 				<div class="col-sm-4">
-					<% if true %>
+					<% if !@favorite %>
 						<a href="favorites/<%=@discussion.id %>/add">
-							<i class="fas fa-star"></i>
+							<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
 						</a>
 					<% else %>
 						<a href="favorites/<%=@discussion.id %>/add">
-							<i class="fal fa-star"></i>
+							<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
 						</a>
 					<% end %>
 				</div>
