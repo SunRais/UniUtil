@@ -7,15 +7,16 @@
 		</b></a>
 		<%= n.action %>
 		<% if n.action == "posted a " %>
-			<a href="/discussions/<%= n.notifiable_id %>"><b>
-			<%= n.notifiable_type %>
+			<a href="/discussions/<%= n.notifiable.discussion.id %>"><b>
+				<%= n.notifiable_type %>
 			</b></a>
 		<% else%>
-			<a href="/subjects/<%= n.notifiable_id %>"><b>
-			<%= n.notifiable_type %>
+			<a href="/subjects/<%= n.notifiable.subjects.id %>"><b>
+				<%= n.notifiable_type %>
 			</b></a>
 		<% end %>
 		in data <%= n.created_at.strftime("%B %d, %Y") %>
+		alle ore <%= n.created_at.strftime("%I:%M%p") %>
 	</li>
 <% end %>
 </ul>

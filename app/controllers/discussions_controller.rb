@@ -4,7 +4,7 @@ class DiscussionsController < ApplicationController
   def index
   	if params[:search]
   		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
-  		sql = "SELECT id FROM discussions where title LIKE " + params[:search].to_s + " order by created_at DESC"
+  		sql = "SELECT id FROM discussions where title LIKE '%" + params[:search].to_s + "%' order by created_at DESC"
   	elsif params[:discussion_type]
 			@discussion_type = params[:discussion_type]
 	 		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where(:discussion_type => @discussion_type).where('title is not null').order("created_at DESC")
