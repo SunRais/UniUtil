@@ -19,7 +19,8 @@
 							<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
 						</a>
 					<% else %>
-						<a href="favorites/<%=@discussion.id %>/add">
+						<%= @favorite['id'] %>
+						<a href="favorites/<%=@discussion.id %>/remove">
 							<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
 						</a>
 					<% end %>

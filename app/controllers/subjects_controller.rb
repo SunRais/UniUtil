@@ -21,7 +21,7 @@ class SubjectsController < ApplicationController
 	end
 
 	def show
-		@followed = Subject.check_followed(current_user.di, @subject.id)
+		@followed = Subject.check_followed(current_user.id, @subject.id)
 		@prof = User.where(["id =?", @subject.user_id]).first
 	end
 
