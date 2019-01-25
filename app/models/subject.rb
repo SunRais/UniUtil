@@ -12,9 +12,6 @@ class Subject < ApplicationRecord
   def self.not_followed_subjects(user_id)
   	sql = "select s.id, s.name as subject, u.name, u.surname from subjects as s join users as u on s.user_id = u.id where s.id not in (select subject_id from subjects_users where user_id = " + user_id.to_s + ") order by s.name"
   	result = ActiveRecord::Base.connection.execute(sql)
-    result.each do |r|
-      puts r[0]
-    end
     return result
   end
 
@@ -31,11 +28,14 @@ class Subject < ApplicationRecord
   end
 
   def self.follow_subject(user_id, subject_id)
-    t = Time.now
-    time = t.strftime("%Y-%m-%d %H:%M:%S")
     sql = "INSERT INTO subjects_users(user_id, subject_id) VALUES ("+user_id.to_s+","+subject_id.to_s+")"
     ActiveRecord::Base.connection.execute(sql)
   end
 
+  def self.select_followed(user_id)
+    sql = "select * from subjects where id in (select subject_id from subjects_users where user_id = "+user_id.to_s+")"
+    result = ActiveRecord::Base.connection.execute(sql)
+    return result
+  end
 
 end

@@ -35,4 +35,9 @@ class Discussion < ApplicationRecord
     result = ActiveRecord::Base.connection.execute(sql)
     return result
   end
+
+  def self.put_to_favorites(user_id, discussion_id)
+    sql = "INSERT INTO discussions_users(user_id, discussion_id) VALUES ("+user_id.to_s+","+discussion_id.to_s+")"
+    ActiveRecord::Base.connection.execute(sql)
+  end
 end

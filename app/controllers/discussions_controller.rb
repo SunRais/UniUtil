@@ -66,8 +66,7 @@ class DiscussionsController < ApplicationController
   end
 
   def add_to_favorites
-  	@user = current_user
-  	@user.discussions << @discussion
+  	Discussion.put_to_favorites(current_user.id, @discussion.id)
 	redirect_to discussion_path(@discussion)
   end
 
