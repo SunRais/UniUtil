@@ -259,9 +259,6 @@ a.article, a.article:hover {
         margin-bottom: 10px;
     }
 
-    width: 40%;
-    margin: auto;
-
 }
 
 .signup-form {
@@ -523,4 +520,14 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
 
 .rimg {
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 640px){
+    
+}
+@media only screen and (min-width: 640px){
+    .smart-form{
+        width: 40%;
+        margin: auto;
+    }
 }
