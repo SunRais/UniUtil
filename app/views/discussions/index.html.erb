@@ -22,19 +22,19 @@
 </nav>
 <nav class="type-discussions">
 	<div class="row">
-		<div class="col">
+		<div class="col discussions-item">
 			<%= link_to "Tutte le discussioni", discussions_path %>
 			</div>
-		<div class="col">
+		<div class="col discussions-item">
 			<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
 		</div>
-		<div class="col">
+		<div class="col discussions-item">
 			<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
 		</div>
-		<div class="col">
+		<div class="col discussions-item">
 			<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
 		</div>
-		<div class="col">
+		<div class="col discussions-item">
 			<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
 		</div>
 	</div>
