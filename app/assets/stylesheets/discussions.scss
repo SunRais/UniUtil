@@ -5,6 +5,7 @@
 .attachment-row {
   margin-top: 2%;
   margin-bottom: 1%;
+  text-align: center;
 }
 
 .type-discussions {
@@ -49,9 +50,7 @@
 	color: black;
 	font-family: 'Poppins';
 }
-#user-name {
-	text-align: center;
-}
+
 .comment{
 	margin: 0;
 	margin-top: 1%;
@@ -59,11 +58,8 @@
 	padding-top: 1%;
 	padding-bottom:1%;
 	border-radius: 8px;
-  text-align: center;
 }
-.comment-name {
-	border-right: 5px solid #7386D5;
-}
+
 #form-discussion {
 	margin-top: 1%;
   background-color: white;
@@ -152,6 +148,12 @@
   border-right: 5px solid #7386D5;  
 }
 
+#user-name {
+  text-align: center;
+}
+.comment-name {
+  border-right: 5px solid #7386D5;
+}
 }
 
 }
@@ -168,8 +170,15 @@
   text-align: center;
   padding-top: 1%;
 }
-#box-name {
-  border-bottom: 5px solid #7386D5;  
+#user-name {
+  text-align: center;
+  width: 95%;
+  margin: auto;
 }
-
+.comment-name {
+  border-bottom: 5px solid #7386D5;
+  text-align: center;
+  width: 95%;
+  font-size: 150%;
+}
 }
