@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#course-list {
+.course-list {
 	margin: auto;
 	width: 70%;
 	font-size: 240%;
 }
-#course-list ul li{
+.course-list ul li{
 	list-style-type: none;
 	margin-top: 2% !important;
 	background-color: white;
@@ -17,7 +17,7 @@
 	padding: 1% 0 1% 0;
 	text-align: center;
 }
-#course-list li {
+.course-list li {
 	margin: 0 0 3px 0;
 }
 
