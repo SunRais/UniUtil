@@ -23,23 +23,19 @@
 <nav class="type-discussions">
 	<div class="row">
 		<div class="col">
-			<ul>
-				<li>
-					<%= link_to "Tutte le discussioni", discussions_path %>
-				</li>
-				<li>
-					<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
-				</li>
-				<li>
-					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
-				</li>
-				<li>
-					<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
-				</li>
-				<li>
-					<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
-				</li>
-			</ul>
+			<%= link_to "Tutte le discussioni", discussions_path %>
+			</div>
+		<div class="col">
+			<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
+		</div>
+		<div class="col">
+			<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
+		</div>
+		<div class="col">
+			<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
+		</div>
+		<div class="col">
+			<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
 		</div>
 	</div>
 </nav>
