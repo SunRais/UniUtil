@@ -39,9 +39,7 @@
 	padding-top: 1%;
 	padding-left: 2%;
 	padding-bottom: 1%;
-}
-#box-name {
-	border-right: 5px solid #7386D5;	
+  text-align: center; 
 }
 #show-discussion {
 	padding-left: 5%;
@@ -61,6 +59,7 @@
 	padding-top: 1%;
 	padding-bottom:1%;
 	border-radius: 8px;
+  text-align: center;
 }
 .comment-name {
 	border-right: 5px solid #7386D5;
@@ -149,6 +148,9 @@
   width: 100;
   padding-top: 1%;
 	}
+  #box-name {
+  border-right: 5px solid #7386D5;  
+}
 
 }
 
@@ -166,7 +168,8 @@
   text-align: center;
   padding-top: 1%;
 }
-
-
+#box-name {
+  border-bottom: 5px solid #7386D5;  
+}
 
 }
