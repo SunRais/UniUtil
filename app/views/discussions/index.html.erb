@@ -1,19 +1,15 @@
 
-<nav class="navbar superior-bar navbar-default row">
-	<div class="col-sm-8" id="links-superior-bar">
-		<ul>
-			<li>
-				<%= link_to "Nuova discussione", new_discussion_path %>
-			</li>
-			<li>
-				<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
-			</li>
-			<li>
-				<%= link_to "Preferiti", discussions_my_favorites_index_path %>
-			</li>
-		</ul>
+<nav class="navbar superior-bar navbar-default row" id="links-superior-bar">
+	<div class="col-md-3" >
+		<%= link_to "Nuova discussione", new_discussion_path %>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-md-3">
+		<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
+	</div>
+	<div class="col-md-3">
+		<%= link_to "Preferiti", discussions_my_favorites_index_path %>
+	</div>
+	<div class="col-md-3">
 		<%= form_tag(discussions_path, method: :get) do %>
 		<%= text_field_tag :search, params[:search] %>
 		<%= submit_tag 'Cerca', name: nil%>	
@@ -22,19 +18,19 @@
 </nav>
 <nav class="type-discussions">
 	<div class="row">
-		<div class="col-sm discussions-item">
+		<div class="col-md discussions-item">
 			<%= link_to "Tutte le discussioni", discussions_path %>
 			</div>
-		<div class="col-sm discussions-item">
+		<div class="col-md discussions-item">
 			<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
 		</div>
-		<div class="col-sm discussions-item">
+		<div class="col-md discussions-item">
 			<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
 		</div>
-		<div class="col-sm discussions-item">
+		<div class="col-md discussions-item">
 			<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
 		</div>
-		<div class="col-sm discussions-item">
+		<div class="col-md discussions-item">
 			<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
 		</div>
 	</div>
