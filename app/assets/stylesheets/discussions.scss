@@ -61,8 +61,10 @@
 }
 
 #form-discussion {
-	margin-top: 1%;
+	margin-top: 1% !important;
   background-color: white;
+  margin: auto;
+  width: 100%;
   border-radius: 8px;
   padding-top: 1%;
   padding-bottom: 1%; 
@@ -174,11 +176,14 @@
   text-align: center;
   width: 95%;
   margin: auto;
+  border-bottom: 5px solid #7386D5;
+  font-size: 150%;
 }
 .comment-name {
   border-bottom: 5px solid #7386D5;
   text-align: center;
   width: 95%;
   font-size: 150%;
+  margin: auto;
 }
 }
