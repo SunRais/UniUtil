@@ -1,6 +1,11 @@
-<ul>
+<div class="row" id="notifications-title">
+	<div class="col">
+		Notifiche
+	</div>
+</div>
 <% @notifications.each do |n| %>
-	<li>
+	<div class="row notifications-description">
+		<div class="col">
 		<a href="/users/<%= n.actor.id %>"><b>
 				<%= n.actor.name %>
 				<%= n.actor.surname %>
@@ -17,6 +22,6 @@
 		<% end %>
 		in data <%= n.created_at.strftime("%B %d, %Y") %>
 		alle ore <%= n.created_at.strftime("%I:%M%p") %>
-	</li>
+	</div>
+</div>
 <% end %>
-</ul>
