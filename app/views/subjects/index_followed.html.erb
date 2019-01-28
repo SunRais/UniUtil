@@ -1,11 +1,11 @@
 <% if @subjects.count == 0 %>
 	<h4>Attualmente non segui nessun corso.</h4>
 <% else %>
-<div id="course-list">
+<div>
   <div id="label-followed-course"> CORSI SEGUITI: </div>
 	  <div id = "course-list">
 	  <% @subjects.each do |subject| %>
-	  <div class="row">
+	  <div class="row course-list">
 	  	<div class="col">
 	    		<a href="/subjects/<%= subject['id'] %>">
 	    		 	Corso: <%= subject['name'] %>
