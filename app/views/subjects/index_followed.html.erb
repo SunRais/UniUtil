@@ -7,7 +7,7 @@
 	  <% @subjects.each do |subject| %>
 	  <div class="row">
 	  	<div class="col">
-	    		<a href="/subjects/<%= subject.id %>">
+	    		<a href="/subjects/<%= subject['id'] %>">
 	    		 	Corso: <%= subject.name %>
 	    		</a>
 	    	</div>
