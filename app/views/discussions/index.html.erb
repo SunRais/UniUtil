@@ -39,9 +39,9 @@
 	<% if @discussions %>
 		<% %>
 		<% @discussions.each do |discussion| %>
-			<div class="discussion-box">
+			<div class="discussion-box text-center">
 				<div class="row">
-					<div class="col-lg-7 title-discussion text-center">
+					<div class="col-lg-7 title-discussion">
 						<%= link_to discussion.title, discussion_path(discussion) %>
 					</div>
 					<div class="col-lg-3 detail-discussion">
