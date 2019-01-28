@@ -3,12 +3,16 @@
 <% else %>
 <div id="course-list">
   <div id="label-followed-course"> CORSI SEGUITI: </div>
-  <ul>
-  	<% @subjects.each do |subject| %>
-    		<a href="/subjects/<%= subject['id'] %>">
-    		  <li> Corso: <%= subject['name'] %></li>
-    		</a>
-  	<% end %>
-  </ul>
+	  <div id = "course-list">
+	  <% @subjects.each do |subject| %>
+	  <div class="row">
+	  	<div class="col">
+	    		<a href="/subjects/<%= subject.id %>">
+	    		 	Corso: <%= subject.name %>
+	    		</a>
+	    	</div>
+	    </div>
+	  <% end %>
+	</div>
 </div>
 <% end %>
