@@ -2,23 +2,21 @@
 <div>
 	<% if (@discussions.values.length > 0) %>
 		<% @discussions.each do |discussion| %>
-			<div class="discussion-box">
-				<div class="row">
-					<div class="col-lg-7 title-discussion">
-						<a href="/discussions/<%= discussion['id']%>"><%= discussion['title']%></a>
-					</div>
-					<div class="col-lg-3 detail-discussion">
-						Autore:
-						<%= @users[discussion['id']] %>
-					</div>
-					<div class="col-lg-2 detail-discussion">
-						Commenti:
-						<% if @comments_number[discussion['id']] != nil %>
-							<%= @comments_number[discussion['id']] %>
-						<% else %>
-							0
-						<% end %>
-					</div>
+			<div class="row discussion-box">
+				<div class="col-lg-7 title-discussion">
+					<a href="/discussions/<%= discussion['id']%>"><%= discussion['title']%></a>
+				</div>
+				<div class="col-lg-3 detail-discussion">
+					Autore:
+					<%= @users[discussion['id']] %>
+				</div>
+				<div class="col-lg-2 detail-discussion">
+					Commenti:
+					<% if @comments_number[discussion['id']] != nil %>
+						<%= @comments_number[discussion['id']] %>
+					<% else %>
+						0
+					<% end %>
 				</div>
 			</div>
 			<%  %>
