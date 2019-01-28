@@ -41,15 +41,15 @@
 		<% @discussions.each do |discussion| %>
 			<div class="discussion-box">
 				<div class="row">
-					<div class="col-md-7 title-discussion">
+					<div class="col-lg-7 title-discussion">
 						<%= link_to discussion.title, discussion_path(discussion) %>
 					</div>
-					<div class="col-md-3 detail-discussion">
+					<div class="col-lg-3 detail-discussion">
 						Autore:
 						<%= discussion.user.name %>
 						<%= discussion.user.surname %>
 					</div>
-					<div class="col-md-2 detail-discussion">
+					<div class="col-lg-2 detail-discussion">
 						Commenti:
 						<% if @comments_number[discussion.id] != nil %>
 							<%= @comments_number[discussion.id] %>
