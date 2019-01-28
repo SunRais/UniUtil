@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#course-list {
+.course-list {
 	margin: auto;
 	width: 100%;
 	font-size: 240%;
@@ -71,6 +71,9 @@
 #label-followed-course {
 	text-align: center;
 	border-bottom: 5px solid #7386D5;
+	background-color: white;
+	border-top-left-radius: 8px;
+	border-top-rigth-radius: 8px;
 }
 
 .announcement-title {
