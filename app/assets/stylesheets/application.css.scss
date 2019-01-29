@@ -297,8 +297,13 @@ a.article, a.article:hover {
 }
 .circle img {
     border-radius: 50%; 
+    width: 115px;
 }
 
+.circle.missing-img {
+    width: 50px;
+
+}
 a.circle { color: transparent; } /* IE fix: removes blue border */
 
 
@@ -453,6 +458,10 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
   background: #ccc;
 }
 
+.missing-img {
+    margin-left: 10%;
+}
+
 @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
@@ -518,17 +527,22 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
     padding-left: 5%;
     padding-top: 1%;
 }
+#unife-img {
+    width: 270%;
+    margin-left: 70%;
+}
 
 .rimg {
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 640px){
-    
-}
 @media only screen and (min-width: 640px){
     .smart-form{
         width: 50%;
         margin: auto;
+    }
+    #unife-img {
+        width: 100%;
+        margin: 0;
     }
 }
