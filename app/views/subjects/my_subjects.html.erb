@@ -1,7 +1,7 @@
 <% if @subjects.count == 0 %>
 	<h4>Non ci sono materie per questo corso di studio.</h4>
 <% else %>
-  <div id="course-list">
+  <div class="course-list">
     <ul>
     	<% @subjects.each do |subject| %>
       		<a href="/subjects/<%= subject.id %>">

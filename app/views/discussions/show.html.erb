@@ -2,10 +2,12 @@
 	<div class="row">
 		<div class="col-sm-2" id="box-name">
 			<div class="row" id="user-name">
-				<a href="/users/<%= @user.id %>">
-					<%= @user.name %>
-					<%= @user.surname%>
-				</a>
+				<div class="col">
+					<a href="/users/<%= @user.id %>">
+						<%= @user.name %>
+						<%= @user.surname%>
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class="col-sm-10" id="show-discussion">
@@ -26,10 +28,14 @@
 				</div>
 			</div>
 			<div class="row">
-				<h4> <%= @discussion.discussion_type %> </h4>
+				<div class="col">
+					<h4> <%= @discussion.discussion_type %> </h4>
+				</div>
 			</div>
 			<div class="row" id="description">
-				<%= @discussion.description %>
+				<div class="col">
+					<%= @discussion.description %>
+				</div>
 			</div>
 			<% if @discussion.file.attached? %>
 				<div class="row attachment-row">
@@ -44,11 +50,13 @@
 			<% end %>
 			<% if @discussion.user_id == current_user.id%>
 			<div class="row attachment-row">
-				<div class="manage-button">
-					<%= link_to "Modifica", edit_discussion_path(@discussion)%>
-				</div>
-				<div class="manage-button">
-					<%= link_to "Cancella", discussion_path(@discussion), method: :delete, data: {confirm: "Sei sicuro?"} %>
+				<div class="col">
+					<div class="manage-button">
+						<%= link_to "Modifica", edit_discussion_path(@discussion)%>
+					</div>
+					<div class="manage-button">
+						<%= link_to "Cancella", discussion_path(@discussion), method: :delete, data: {confirm: "Sei sicuro?"} %>
+					</div>
 				</div>
 			</div>
 			<% end %>

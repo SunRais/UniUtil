@@ -1,45 +1,37 @@
 
-<nav class="navbar superior-bar navbar-default row">
-	<div class="col-sm-8" id="links-superior-bar">
-		<ul>
-			<li>
-				<%= link_to "Nuova discussione", new_discussion_path %>
-			</li>
-			<li>
-				<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
-			</li>
-			<li>
-				<%= link_to "Preferiti", discussions_my_favorites_index_path %>
-			</li>
-		</ul>
+<nav class="navbar superior-bar navbar-default row" id="links-superior-bar">
+	<div class="col-md-3" >
+		<%= link_to "Nuova discussione", new_discussion_path %>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-md-3">
+		<%= link_to "Le mie discussioni", discussions_path(user_id: current_user.id) %>
+	</div>
+	<div class="col-md-3">
+		<%= link_to "Preferiti", discussions_my_favorites_index_path %>
+	</div>
+	<div class="col-md-3">
 		<%= form_tag(discussions_path, method: :get) do %>
-		<%= text_field_tag :search, params[:search] %>
+		<%= text_field_tag :search, params[:search], size: 15 %>
 		<%= submit_tag 'Cerca', name: nil%>	
 		<% end %>
 	</div>
 </nav>
 <nav class="type-discussions">
 	<div class="row">
-		<div class="col">
-			<ul>
-				<li>
-					<%= link_to "Tutte le discussioni", discussions_path %>
-				</li>
-				<li>
-					<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
-				</li>
-				<li>
-					<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
-				</li>
-				<li>
-					<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
-				</li>
-				<li>
-					<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
-				</li>
-			</ul>
+		<div class="col-md discussions-item">
+			<%= link_to "Tutte le discussioni", discussions_path %>
+			</div>
+		<div class="col-md discussions-item">
+			<%= link_to "Domande generali", discussions_path(discussion_type: 'Domande generali') %>
+		</div>
+		<div class="col-md discussions-item">
+			<%= link_to "Avvisi dei professori", discussions_path(discussion_type: 'Avvisi dei professori') %>
+		</div>
+		<div class="col-md discussions-item">
+			<%= link_to "Gruppi di studio", discussions_path(discussion_type: 'Gruppo di studio') %>
+		</div>
+		<div class="col-md discussions-item">
+			<%= link_to "Materiale didattico", discussions_path(discussion_type: 'Materiale didattico') %>
 		</div>
 	</div>
 </nav>
@@ -47,24 +39,22 @@
 	<% if @discussions %>
 		<% %>
 		<% @discussions.each do |discussion| %>
-			<div class="discussion-box">
-				<div class="row">
-					<div class="col-md-7 title-discussion">
-						<%= link_to discussion.title, discussion_path(discussion) %>
-					</div>
-					<div class="col-md-3 detail-discussion">
-						Autore:
-						<%= discussion.user.name %>
-						<%= discussion.user.surname %>
-					</div>
-					<div class="col-md-2 detail-discussion">
-						Commenti:
-						<% if @comments_number[discussion.id] != nil %>
-							<%= @comments_number[discussion.id] %>
-						<% else %>
-							0
-						<% end %>
-					</div>
+			<div class="row discussion-box text-center">
+				<div class="col-lg-7 title-discussion">
+					<%= link_to discussion.title, discussion_path(discussion) %>
+				</div>
+				<div class="col-lg-3 detail-discussion">
+					Autore:
+					<%= discussion.user.name %>
+					<%= discussion.user.surname %>
+				</div>
+				<div class="col-lg-2 detail-discussion">
+					Commenti:
+					<% if @comments_number[discussion.id] != nil %>
+						<%= @comments_number[discussion.id] %>
+					<% else %>
+						0
+					<% end %>
 				</div>
 			</div>
 			<%  %>

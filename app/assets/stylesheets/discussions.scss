@@ -5,14 +5,13 @@
 .attachment-row {
   margin-top: 2%;
   margin-bottom: 1%;
+  text-align: center;
 }
 
-.type-discussions ul li {
-	display: inline-block;
-	margin-left: 5%;
-	font-size: 100%;
+.type-discussions {
+	margin-bottom: 1%;
 }
-.type-discussions ul li :hover{
+.discussions-item :hover{
 	border-bottom: 2px solid #7386D5;
 }
 .superior-bar{
@@ -22,7 +21,8 @@
 	margin-bottom: 1% !important;
 }
 #links-superior-bar{
-	width: 90%;
+	width: 100%;
+	text-align: center;
 }
 .discussion-box {
 	background-color: white;
@@ -39,10 +39,7 @@
 	border-radius: 8px;
 	padding-top: 1%;
 	padding-left: 2%;
-	padding-bottom: 1%;
-}
-#box-name {
-	border-right: 5px solid #7386D5;	
+	padding-bottom: 1%; 
 }
 #show-discussion {
 	padding-left: 5%;
@@ -52,23 +49,21 @@
 	color: black;
 	font-family: 'Poppins';
 }
-#user-name {
-	text-align: center;
-}
+
 .comment{
 	margin: 0;
-	margin-top: 1%;
+	margin-top: 3%;
 	background-color: white;
 	padding-top: 1%;
 	padding-bottom:1%;
 	border-radius: 8px;
 }
-.comment-name {
-	border-right: 5px solid #7386D5;
-}
+
 #form-discussion {
-	margin-top: 1%;
+	margin-top: 1% !important;
   background-color: white;
+  margin: auto;
+  width: 100%;
   border-radius: 8px;
   padding-top: 1%;
   padding-bottom: 1%; 
@@ -130,9 +125,16 @@
   line-height: 57px;
 }
 
-  .title-discussion {
+	.discussions-item {
+  display: inline-block;
+  text-align: center;
+	}
+	  .title-discussion {
   font-size: 150%;
-}
+  margin: auto;
+  width: 100%;
+  padding-top: 1%;
+	}
 @media only screen and (min-device-width:640px){
   
   .superior-bar div ul li{
@@ -142,8 +144,20 @@
 
   .title-discussion {
   font-size: 150%;
-  text-align: center;
+  margin: auto;
+  width: 100;
   padding-top: 1%;
+	}
+  #box-name {
+  border-right: 5px solid #7386D5;
+  text-align: center;  
+}
+
+#user-name {
+  
+}
+.comment-name {
+  border-right: 5px solid #7386D5;
 }
 }
 
@@ -156,12 +170,28 @@
     width: 100%;
   }
 
+.text-center {
+	text-align: center;
+}
   .title-discussion {
   font-size: 150%;
   text-align: center;
   padding-top: 1%;
+  width: 96%;
+  border-bottom: 5px solid #7386D5;
 }
-
-
-
+#user-name {
+  text-align: center;
+  width: 95%;
+  margin: auto;
+  border-bottom: 5px solid #7386D5;
+  font-size: 150%;
+}
+.comment-name {
+  border-bottom: 5px solid #7386D5;
+  text-align: center;
+  width: 95%;
+  font-size: 150%;
+  margin: auto;
+}
 }

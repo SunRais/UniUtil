@@ -1,6 +1,6 @@
 <div class="row search-bar">
-  <div class="col-md-6">
-    <a class="btn btn-secondary dropdown-toggle hide-arrow course-button" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="col-sm-6">
+    <a class="btn btn-secondary dropdown-toggle hide-arrow course-button margin-bottom-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Corso di Studio
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -10,7 +10,7 @@
     <% end %>
   </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-sm-6">
     <form action="/subjects">
   		<input type="text" placeholder="Cerca.." name="search">
   		<button type="submit"><i class="fa fa-search"></i></button>
@@ -20,14 +20,14 @@
 <% if @subjects.count == 0 %>
 	<h4>Non ci sono materie per questo corso di studio.</h4>
 <% else %>
-<div id="course-list">
-  <ul>
-  	<% @subjects.each do |subject| %>
-    		<a href="/subjects/<%= subject['id'] %>">
-    		  <li><b><%= subject['subject'] %></b> di <%= subject['name'] %> <%= subject['surname'] %></li>
-    		</a>
-  	<% end %>
-  </ul>
-</div>
+  <% @subjects.each do |subject| %>
+    <div class="row course-list">
+      <div class="col">
+      	<a href="/subjects/<%= subject['id'] %>">
+      	  <b><%= subject['subject'] %></b> di <%= subject['name'] %> <%= subject['surname'] %>
+      	</a>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
