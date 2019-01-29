@@ -57,7 +57,7 @@
                             <% end %><br>
                             <div class="circle">
                                 <%= link_to user_path(current_user.id) do %>
-                                    <% if current_user.avatar.values.length == 0 %>
+                                    <% if current_user.avatar.file? %>
                                         <img src="<%= image_url('missing.jpg') %>" alt="Avatar" class="rimg missing-img"></img>
                                     <% else %>
                                         <%= image_tag(current_user.avatar.url(:thumb)) %>
