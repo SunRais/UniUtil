@@ -1,27 +1,31 @@
-<div class="row" id="notifications-title">
+<div class="row">
 	<div class="col">
-		Notifiche
+		<div id="notifications-title">
+			Notifiche
+		</div>
 	</div>
 </div>
 <% @notifications.each do |n| %>
-	<div class="row notifications-description">
+	<div class="row">
 		<div class="col">
-		<a href="/users/<%= n.actor.id %>"><b>
-				<%= n.actor.name %>
-				<%= n.actor.surname %>
-		</b></a>
-		<%= n.action %>
-		<% if n.action == "posted a " %>
-			<a href="/discussions/<%= n.notifiable.discussion.id %>"><b>
-				<%= n.notifiable_type %>
+			<div class="notifications-description">
+			<a href="/users/<%= n.actor.id %>"><b>
+					<%= n.actor.name %>
+					<%= n.actor.surname %>
 			</b></a>
-		<% else%>
-			<a href="/subjects/<%= n.notifiable.subject.id %>"><b>
-				<%= n.notifiable_type %>
-			</b></a>
-		<% end %>
-		in data <%= n.created_at.strftime("%B %d, %Y") %>
-		alle ore <%= n.created_at.strftime("%I:%M%p") %>
+			<%= n.action %>
+			<% if n.action == "posted a " %>
+				<a href="/discussions/<%= n.notifiable.discussion.id %>"><b>
+					<%= n.notifiable_type %>
+				</b></a>
+			<% else%>
+				<a href="/subjects/<%= n.notifiable.subject.id %>"><b>
+					<%= n.notifiable_type %>
+				</b></a>
+			<% end %>
+			in data <%= n.created_at.strftime("%B %d, %Y") %>
+			alle ore <%= n.created_at.strftime("%I:%M%p") %>
+		</div>
 	</div>
 </div>
 <% end %>

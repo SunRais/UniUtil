@@ -1,21 +1,15 @@
 <div id="discussion-show">
 	<div class="row">
 		<div class="col-sm-2" id="box-name">
-			<div class="row" id="user-name">
-				<div class="col">
-					<a href="/users/<%= @user.id %>">
-						<%= @user.name %>
-						<%= @user.surname%>
-					</a>
-				</div>
-			</div>
+			<a href="/users/<%= @user.id %>">
+				<%= @user.name %>
+				<%= @user.surname%>
+			</a>
 		</div>
 		<div class="col-sm-10" id="show-discussion">
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col">
 					<h2> <%= @discussion.title %> </h2>
-				</div>
-				<div class="col-sm-4">
 					<% if @favorite.values.length == 0 %>
 						<a href="favorites/<%=@discussion.id %>/add">
 							<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
@@ -26,7 +20,7 @@
 						</a>
 					<% end %>
 				</div>
-			</div>
+			</div>s
 			<div class="row">
 				<div class="col">
 					<h4> <%= @discussion.discussion_type %> </h4>
