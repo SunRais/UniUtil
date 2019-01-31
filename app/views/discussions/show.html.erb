@@ -24,7 +24,7 @@
 			</div>
 			<div class="row attachment-row">
 			<% if @discussion.file.attached? %>
-					<div class="col">
+					<div class="col-4">
 						<i class="fas fa-paperclip"></i>
 						<%= link_to @discussion.file.filename, @discussion.file %>
 						<div class="download-button">
@@ -33,7 +33,7 @@
 					</div>
 			<% end %>
 			<% if @discussion.user_id == current_user.id%>
-				<div class="col">
+				<div class="col-4">
 					<div class="manage-button">
 						<%= link_to "Modifica", edit_discussion_path(@discussion)%>
 					</div>
@@ -43,13 +43,13 @@
 				</div>
 			<% end %>
 			<% if @favorite.values.length == 0 %>
-			<div class="col">
+			<div class="col-4">
 				<a href="favorites/<%=@discussion.id %>/add">
 					<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
 				</a>
 			</div>
 			<% else %>
-			<div class="col">
+			<div class="col-4">
 				<a href="favorites/<%=@discussion.id %>/remove">
 					<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
 				</a>
