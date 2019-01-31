@@ -57,7 +57,11 @@
                             <% end %><br>
                             <div class="circle">
                                 <%= link_to user_path(current_user.id) do %>
-                                    <%= image_tag(current_user.avatar.url(:thumb), unless: current_user.avatar.nil?) %>
+                                    <% if !current_user.avatar.file? %>
+                                        <img src="<%= image_url('missing.png') %>" alt="Avatar" class="rimg missing-img"></img>
+                                    <% else %>
+                                        <%= image_tag(current_user.avatar.url(:thumb)) %>
+                                    <% end %>
                                 <% end %>
                             </div>
                         <% else %>
@@ -91,7 +95,7 @@
                             <% else %>
                                 <ul class="collapse list-unstyled" id="pageSubmenu">
                                     <li>
-                                        <a href="/subjects">Corsi seguibili</a>
+                                        <a href="/subjects">Corsi disponibili</a>
                                     </li>
                                     <li>
                                         <a href="/subjects/follow/index">Corsi seguiti</a>
@@ -135,14 +139,19 @@
                         <nav class="navbar navbar-expand-lg navbar-light bg-light color-navbar">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-sm-1">
+                                    <div class="col-1">
                                         <button type="button" id="sidebarCollapse" class="navbar-btn color-navbar">
                                             <span></span>
                                             <span></span>
                                             <span></span>
                                         </button>
                                     </div>
-                                    <div class="col-sm-11">
+                                    <div class="col-2">
+                                        <a href="https://de.unife.it/it"> 
+                                            <img id="unife-img" src="<%= image_url('unife.jpeg') %>"></img>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-9">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="universita">Università degli studi di Ferrara</div>

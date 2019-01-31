@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <%= image_tag(@user.avatar.url(:medium), unless: @user.avatar.nil?) %>
+                    <% if !current_user.avatar.file? %>
+                        <img src="<%= image_url('missing.png') %>" width="50" height="50" ></img>
+                    <% else %>
+                        <%= image_tag(@user.avatar.url(:medium), unless: @user.avatar.nil?) %>
+                    <% end %>
                 </div>
             </div>
             <div class="col-md-5">

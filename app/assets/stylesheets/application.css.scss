@@ -297,8 +297,13 @@ a.article, a.article:hover {
 }
 .circle img {
     border-radius: 50%; 
+    width: 115px;
 }
 
+.circle.missing-img {
+    width: 50px;
+
+}
 a.circle { color: transparent; } /* IE fix: removes blue border */
 
 
@@ -453,6 +458,7 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
   background: #ccc;
 }
 
+
 @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
@@ -508,8 +514,8 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
 }
 
 .color-navbar {
-    background-color: #7386D5 !important;
-    color: white;
+    background-color: white !important;
+    color: #7386D5;
 }
 .universita {
     width: 100%;
@@ -518,17 +524,22 @@ a.circle { color: transparent; } /* IE fix: removes blue border */
     padding-left: 5%;
     padding-top: 1%;
 }
+#unife-img {
+    width: 270%;
+    margin-left: 70%;
+}
 
 .rimg {
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 640px){
-    
-}
 @media only screen and (min-width: 640px){
     .smart-form{
         width: 50%;
         margin: auto;
+    }
+    #unife-img {
+        width: 100%;
+        margin: 0;
     }
 }

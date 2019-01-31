@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_attached_file :avatar, styles: { medium: "50x50>", thumb: "10x10>" }, :default_url => ActionController::Base.helpers.asset_path('missing.jpg')
+  has_attached_file :avatar, styles: { medium: "50x50>", thumb: "115x115>" }, :default_url => ActionController::Base.helpers.asset_path('missing.jpg')
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   attr_accessor :code
   has_and_belongs_to_many :subjects
