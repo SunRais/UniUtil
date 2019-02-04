@@ -3,7 +3,7 @@ class DiscussionsController < ApplicationController
   before_action :find_discussion, only: [:show, :edit, :update, :destroy, :add_to_favorites, :remove_from_favorites]
   def index
   	if params[:searchdiscussion]
-  		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
+  		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:searchdiscussion]}%").order("created_at DESC")
   		sql = "SELECT id FROM discussions where title LIKE '%" + params[:search].to_s + "%' order by created_at DESC"
   	elsif params[:discussion_type]
 			@discussion_type = params[:discussion_type]
