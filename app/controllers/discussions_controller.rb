@@ -2,18 +2,18 @@ class DiscussionsController < ApplicationController
   
   before_action :find_discussion, only: [:show, :edit, :update, :destroy, :add_to_favorites, :remove_from_favorites]
   def index
-  	if params[:search]
-  		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:search]}%").order("created_at DESC")
-  		sql = "SELECT id FROM discussions where title LIKE '%" + params[:search].to_s + "%' order by created_at DESC"
+  	if params[:searchdiscussion]
+  		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title LIKE ?', "%#{params[:searchdiscussion]}%").order("created_at DESC")
+  		sql = "SELECT id FROM discussions where title LIKE '%" + params[:searchdiscussion].to_s + "%' order by created_at DESC"
   	elsif params[:discussion_type]
 			@discussion_type = params[:discussion_type]
-	 		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where(:discussion_type => @discussion_type).where('title is not null').order("created_at DESC")
+	 		@discussions = Discussion.paginate(page: params[:page], per_page: 7).where(:discussion_type => @discussion_type).order("created_at DESC")
 			sql = "SELECT id from discussions where discussion_type LIKE '" + params[:discussion_type].to_s + "' AND title is not null order by created_at DESC"
 		elsif params[:user_id]
-			@discussions = Discussion.paginate(page: params[:page], per_page: 7).where(:user_id => params[:user_id]).where('title IS NOT null').order("created_at DESC")
+			@discussions = Discussion.paginate(page: params[:page], per_page: 7).where(:user_id => params[:user_id]).order("created_at DESC")
 			sql = "SELECT id from discussions where user_id = "+ params[:user_id].to_s + " AND title IS NOT null order by created_at DESC"
 		else				
-			@discussions = Discussion.paginate(page: params[:page], per_page: 7).where('title IS NOT null').all.order("created_at DESC")
+			@discussions = Discussion.paginate(page: params[:page], per_page: 7).all.order("created_at DESC")
 			sql = "SELECT id from discussions where title is not null order by created_at DESC"
 		end
 		@discussions.includes(:user)

@@ -1,13 +1,13 @@
 <% if @subjects.count == 0 %>
-	<h4>Non ci sono materie per questo corso di studio.</h4>
+  <h4>Non ci sono materie per questo corso di studio.</h4>
 <% else %>
-  <div class="course-list">
-    <ul>
-    	<% @subjects.each do |subject| %>
-      		<a href="/subjects/<%= subject.id %>">
-      		  <li><b><%= subject.name %></b></li>
-      		</a>
-    	<% end %>
-    </ul>
-  </div>
+  <% @subjects.each do |subject| %>
+    <div class="row course-list">
+      <div class="col">
+        <a href="/subjects/<%= subject.id %>">
+          <b><%= subject.name %></b>
+        </a>
+      </div>
+    </div>
+  <% end %>
 <% end %>

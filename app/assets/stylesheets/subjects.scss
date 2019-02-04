@@ -2,17 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.course-list {
-	margin: auto;
-	width: 80%;
-	font-size: 150%;
-	margin-top: 2% !important;
-	background-color: white;
-	border-radius: 8px;
-	padding: 1% 0 1% 0;
-	text-align: center;
+.searchcourse{
+	width: 68%;
 }
-
 .search-bar {
 	margin: auto !important;
 	width: 100%;
@@ -96,6 +88,16 @@
 		font-weigth: bolder;
 		text-size: 150%;
 	}
+	.course-list {
+	margin: auto;
+	width: 100%;
+	font-size: 150%;
+	margin-top: 2% !important;
+	background-color: white;
+	border-radius: 8px;
+	padding: 1% 0 1% 0;
+	text-align: center;
+}
 }
 
 @media only screen and (min-width: 640px){
@@ -103,5 +105,16 @@
 	border-right: 5px solid #7386D5;
 	font-weight: bolder;
 	text-size: 150%;
+
+}
+.course-list {
+	margin: auto;
+	width: 80%;
+	font-size: 150%;
+	margin-top: 2% !important;
+	background-color: white;
+	border-radius: 8px;
+	padding: 1% 0 1% 0;
+	text-align: center;
 }
 }
