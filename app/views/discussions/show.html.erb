@@ -23,43 +23,38 @@
 				</div>
 			</div>
 			<div class="row attachment-row">
-			<% if @discussion.file.attached? %>
-					<div class="col-3">
+				<div class="col">
+					<% if @discussion.file.attached? %>
 						<i class="fas fa-paperclip"></i>
 							<%= link_to @discussion.file.filename, @discussion.file %>
 						<div class="download-button">
 							<%= link_to 'Download file', @discussion.file, download: '' %>
 						</div>
-					</div>
-			<% end %>
-			<% if @discussion.user_id == current_user.id%>
-				<div class="col-3">
-					<div class="manage-button">
-						<%= link_to "Modifica", edit_discussion_path(@discussion)%>
-					</div>
+					<% end %>
+					<% if @discussion.user_id == current_user.id%>
+							<div class="manage-button">
+								<%= link_to "Modifica", edit_discussion_path(@discussion)%>
+							</div>
+							<div class="manage-button">
+								<%= link_to "Cancella", discussion_path(@discussion), method: :delete, data: {confirm: "Sei sicuro?"} %>
+							</div>
+					<% end %>
 				</div>
-				<div class="col-3">
-					<div class="manage-button">
-						<%= link_to "Cancella", discussion_path(@discussion), method: :delete, data: {confirm: "Sei sicuro?"} %>
-					</div>
+				<div class="row attachment-row">
+					<% if @favorite.values.length == 0 %>
+						<div class="col">
+							<a href="favorites/<%=@discussion.id %>/add">
+								<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
+							</a>
+						</div>
+					<% else %>
+						<div class="col">
+							<a href="favorites/<%=@discussion.id %>/remove">
+								<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
+							</a>
+						</div>
+					<% end %>
 				</div>
-			<% end %>
-		</div>
-		<div class="row attachment-row">
-			<% if @favorite.values.length == 0 %>
-			<div class="col">
-				<a href="favorites/<%=@discussion.id %>/add">
-					<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
-				</a>
-			</div>
-			<% else %>
-			<div class="col">
-				<a href="favorites/<%=@discussion.id %>/remove">
-					<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
-				</a>
-			</div>
-			<% end %>
-		</div>
 		</div>
 	</div>
 </div>
