@@ -7,13 +7,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="row content-announcement">
+		<div class="row">
+			<div class="col content-announcement">
 			<%= announcement.content %>
+			</div>
 		</div>
 		<% if announcement.file.attached? %>
 		<div class="row">
-			<%= link_to 'Mostra file', announcement.file %>
-			<%= link_to 'Download file', announcement.file, download: '' %>
+			<div class="col">
+				<div class="manage-button">
+					<%= link_to 'Mostra file', announcement.file %>
+				</div>
+				<div class="manage-button">
+					<%= link_to 'Download file', announcement.file, download: '' %>
+				</div>
+			</div>
 		</div>
 		<% end %>
 	</div>
