@@ -40,21 +40,22 @@
 							</div>
 					<% end %>
 				</div>
-				<div class="row attachment-row">
-					<% if @favorite.values.length == 0 %>
-						<div class="col">
-							<a href="favorites/<%=@discussion.id %>/add">
-								<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
-							</a>
-						</div>
-					<% else %>
-						<div class="col">
-							<a href="favorites/<%=@discussion.id %>/remove">
-								<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
-							</a>
-						</div>
-					<% end %>
-				</div>
+			</div>
+			<div class="row attachment-row">
+				<% if @favorite.values.length == 0 %>
+					<div class="col">
+						<a href="favorites/<%=@discussion.id %>/add">
+							<img src="<%= image_url('star-off.png') %>" width="25" height="25"></img>
+						</a>
+					</div>
+				<% else %>
+					<div class="col">
+						<a href="favorites/<%=@discussion.id %>/remove">
+							<img src="<%= image_url('star-on.png') %>" width="25" height="25"></img>
+						</a>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
