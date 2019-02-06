@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <% if !@user.avatar.file? %>
+                    <% if !@user.avatar.attached? %>
                         <img src="<%= image_url('missing.png') %>" width="50" height="50" ></img>
                     <% else %>
                         <%= image_tag(url_for(current_user.avatar)) %>
