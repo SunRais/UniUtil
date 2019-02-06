@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one_attached :avatar, styles: { medium: "250x250>", thumb: "115x115>" }, :default_url => ActionController::Base.helpers.asset_path('missing.jpg')
+  has_one_attached :avatar
   
   attr_accessor :code
   has_and_belongs_to_many :subjects
