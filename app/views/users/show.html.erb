@@ -6,7 +6,7 @@
                     <% if !@user.avatar.attached? %>
                         <img src="<%= image_url('missing.png') %>" width="50" height="50" ></img>
                     <% else %>
-                        <%= image_tag(url_for(current_user.avatar)) %>
+                        <%= image_tag(url_for(@user.avatar)) %>
                     <% end %>
                 </div>
             </div>
