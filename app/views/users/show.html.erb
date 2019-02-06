@@ -6,7 +6,7 @@
                     <% if !@user.avatar.file? %>
                         <img src="<%= image_url('missing.png') %>" width="50" height="50" ></img>
                     <% else %>
-                        <%= image_tag(@user.avatar.url(:medium), unless: @user.avatar.nil?) %>
+                        <%= image_tag(url_for(current_user.avatar)) %>
                     <% end %>
                 </div>
             </div>
